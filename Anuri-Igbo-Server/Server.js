@@ -9,9 +9,9 @@ const port = 3000;
 // Create a MySQL connection
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'your_mysql_username',
-  password: 'your_mysql_password',
-  database: 'your_database_name'
+  user: 'root',
+  password: 'sunisaac223@@$',
+  database: 'language'
 });
 
 // Connect to the MySQL server
@@ -32,7 +32,7 @@ app.use(cors());
 // Add your signup and login routes here
 const authRoutes = require('./auth');
 app.use('/api/auth', authRoutes);
-
+app.use('/api/profile', profileRoutes);
 // Start the server
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import SignupScreen from '../screens/SignupScreen';
-import LoginScreen from '../screens/LoginScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { AuthContext } from '../auth/authContext';
+import ProfileScreen from '../Screens/ProfileScreen';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Signup" component={SignupScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-      </Stack.Navigator>
+      <Tab.Navigator>
+      <Tab.Screen name="Signup" component={SignupScreen} />
+        <Tab.Screen name="Login" component={LoginScreen} />
+        {user ? (
+          <Tab.Screen name="Profile" component={ProfileScreen} />
+        ) : null}
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };

@@ -1,8 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcrypt');
-const connection = require('./db');
 
+
+function createAuthRoutes(connection) {
+    const router = express.Router();
+  
 // Signup route
 router.post('/signup', async (req, res) => {
   try {
@@ -57,5 +59,6 @@ router.post('/login', async (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
     }
   });
+}
 
-  module.exports = router;
+module.exports = createAuthRoutes;
