@@ -8,14 +8,14 @@ function createAuthRoutes(connection) {
 // Signup route
 router.post('/signup', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, email, password, confirmPassword } = req.body;
 
     // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, confirmPassword, 10);
 
     // Save the user to the database
-    const query = 'INSERT INTO users (email, password) VALUES (?, ?)';
-    connection.query(query, [email, hashedPassword], (err, results) => {
+    const query = 'INSERT INTO users (username, email, password, confirmPassword) VALUES (?, ?)';
+    connection.query(query, [username, email, hashedPassword], (err, results) => {
       if (err) {
         console.error('Error creating user:', err);
         res.status(500).json({ error: 'Internal server error' });
@@ -32,11 +32,11 @@ router.post('/signup', async (req, res) => {
 // Login route
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
       // Retrieve the user from the database
       const query = 'SELECT * FROM users WHERE email = ?';
-      connection.query(query, [email], async (err, results) => {
+      connection.query(query, [username], async (err, results) => {
         if (err) {
           console.error('Error retrieving user:', err);
           res.status(500).json({ error: 'Internal server error' });

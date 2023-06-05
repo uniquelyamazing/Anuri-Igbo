@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mysql = require('mysql');
-
+const mysql = require('mysql2');
+const profileRoutes = require('./profile');
+const authRoutes = require('./auth');
 const app = express();
 const port = 3000;
 
@@ -30,7 +31,7 @@ app.use(cors());
 
 // Routes
 // Add your signup and login routes here
-const authRoutes = require('./auth');
+
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 // Start the server
