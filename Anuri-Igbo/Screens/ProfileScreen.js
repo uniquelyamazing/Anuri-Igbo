@@ -15,7 +15,7 @@ const ProfileScreen = () => {
     };
 
     // Send update request to backend
-    axios.put('http://localhost:3000/api/profile', updatedData)
+    axios.put('/profile', updatedData)
       .then((response) => {
 // Handle success
 console.log('Profile updated successfully');

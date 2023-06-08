@@ -28,6 +28,9 @@ connection.connect(err => {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(cors({
+  origin: 'http://192.168.43.20:19000'
+}));
 
 // Routes
 // Add your signup and login routes here

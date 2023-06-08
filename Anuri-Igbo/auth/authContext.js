@@ -14,7 +14,7 @@ const AuthContextProvider = ({ children }) => {
       .then((token) => {
         if (token) {
           // Get user data from backend using the token
-          axios.get('http://localhost:3000/api/auth/user', {
+          axios.get('/auth/user', {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -42,7 +42,7 @@ const AuthContextProvider = ({ children }) => {
     AsyncStorage.setItem('userToken', token)
       .then(() => {
         // Get user data from backend using the token
-        axios.get('http://localhost:3000/api/auth/user', {
+        axios.get('/auth/user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

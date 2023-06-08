@@ -4,12 +4,12 @@
     "slug": "Anuri-Igbo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/do.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/sp.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffebee"
+      "backgroundColor": "#ff73030f"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,12 +19,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/do.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/icon.png"
+      "favicon": "./assets/do.png"
     }
   }
 }

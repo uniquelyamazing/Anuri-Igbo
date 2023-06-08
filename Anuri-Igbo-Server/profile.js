@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql2');
 
-function createAuthRoutes(connection) {
+function profileRoutes(connection) {
     const router = express.Router();
   
 // Route to fetch user profile
@@ -46,4 +46,4 @@ router.put('/', (req, res) => {
   );
 });
 }
-module.exports = router;
+module.exports = profileRoutes;

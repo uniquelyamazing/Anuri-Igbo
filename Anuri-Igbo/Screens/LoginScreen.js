@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
+import axios from 'axios';
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [username, setUsername] = useState('');
@@ -11,16 +11,11 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     // Send a POST request to the login route on the server
-    fetch('http://localhost:3000/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        // Handle the response from the server
+    axios
+    .post('/auth/login', { username, password, confirmPassword })
+    .then(response => {
+      // Handle the response from the server
+      const data = response.data;
         if (data.error) {
           setError(data.error);
           setMessage('');
