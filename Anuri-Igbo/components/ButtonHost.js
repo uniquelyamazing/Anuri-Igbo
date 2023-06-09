@@ -1,49 +1,74 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Audio } from 'expo-av';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 export default function ButtonHost({ soundFile, text, textStyle, buttonColor }) {
-  const [sound, setSound] = React.useState();
+  const [sound, setSound] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  async function playSound() {
-    console.log('Loading Sound');
-    const { sound } = await Audio.Sound.createAsync(soundFile);
-    setSound(sound);
+  const playSound = async () => {
+    try {
+      console.log('Loading Sound');
+      const { sound } = await Audio.Sound.createAsync(soundFile);
+      setSound(sound);
 
-    console.log('Playing Sound');
-    await sound.playAsync();
-  }
+      console.log('Playing Sound');
+      setIsLoading(true);
+      await sound.playAsync();
+      
+    } catch (error) {
+      console.log('Error playing sound', error);
+    } finally {
+      console.log('Sound playback finished');
+      
+    }
+  };
 
-  React.useEffect(() => {
-    return sound
-      ? () => {
-          console.log('Unloading Sound');
-          sound.unloadAsync();
-        }
-      : undefined;
+  useEffect(() => {
+    return () => {
+      if (sound) {
+        console.log('Unloading Sound');
+        sound.unloadAsync();
+      }
+    };
   }, [sound]);
-
+  const end = () => {
+    playSound()
+    
+   }
   return (
-    <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={playSound}>
-      <Text style={[styles.buttonText, textStyle]}>{text}</Text>
+    
+    
+    <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={end}>
+          <Text onLoadEnd={()=> setIsLoading(false)} style={[styles.buttonText, textStyle]}>{text}</Text>
+         <Text style={styles.buttonS}><Ionicons name="volume-high" size={15} color="#ffa449"/ > 
+</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  button: {
+    width: 50,
+    height: 50,
+    borderRadius: 5,
+    marginBottom: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonS: {
+   backgroundColor:'#73030F',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    alignSelf: 'flex-end',
+   padding:2
+  },
+  buttonContent: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-    padding: 10,
-  },
-  button: {
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
-    color: 'white',
-    fontSize: 16,
-    textAlign: 'center',
+    alignItems: 'center',
   },
   buttonText: {
     color: 'white',

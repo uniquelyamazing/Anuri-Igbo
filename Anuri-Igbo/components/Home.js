@@ -24,6 +24,12 @@ export default function Home({navigation}) {
             <Text style={styles.text}>
               Welcome <Text style={styles.p}>Ayomide</Text>
             </Text>
+            <Text style={styles.textss}>
+            Ndewo <Text style={styles.p}>Ayomide</Text>
+            </Text>
+          <Text style={{marginTop:70, color:'#ffa449', fontSize: 18,fontWeight: 'bold',}}>
+             "Learning Igbo Language in an extraordinary way"
+            </Text>
           </ImageBackground>
         </View>
         <View style={styles.learnBox}>
@@ -32,18 +38,21 @@ export default function Home({navigation}) {
           </View>
           <View style={styles.boxBox}>
             <TouchableOpacity  onPress={() => navigation.navigate("Alphabet")}style={styles.box}>
-              <Text>Alphabets</Text>
+              <Text style={styles.texts}>Alphabets</Text>
+              <Text style={styles.textss}>Aa</Text>
             </TouchableOpacity >
             <TouchableOpacity  style={styles.box}>
-              <Text>Numbers</Text>
+              <Text style={styles.texts}>Numbers</Text>
+              <Text style={styles.textss}>123</Text>
             </TouchableOpacity >
           </View>
           <View style={styles.boxBox}>
             <TouchableOpacity  style={styles.box}>
-              <Text>Colors</Text>
+              <Text style={styles.texts}>Colors</Text>
             </TouchableOpacity >
             <TouchableOpacity  style={styles.box}>
-              <Text>Animals</Text>
+              <Text style={styles.texts}>Animals</Text>
+              
             </TouchableOpacity >
           </View>
         </View>
@@ -57,6 +66,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: 'black',
+   
   },
   welcome: {
     width: '100%',
@@ -67,6 +77,19 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: 'white',
     fontWeight: 'bold',
+    marginTop:30
+  },
+  textss: {
+    fontSize: 40,
+    color: 'white',
+    fontWeight: 'bold',
+    
+  },
+  texts: {
+    fontSize: 25,
+    color: '#73030F',
+    fontWeight: 'bold',
+   
   },
   p: {
     fontSize: 25,
@@ -74,8 +97,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   learnBox: {
-    width: '90%',
-    backgroundColor: '#73030F',
+    width: '100%',
+    backgroundColor: '#f4ead4',
     height: 400,
     borderRadius: 10,
     justifyContent: 'center',
@@ -85,11 +108,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   box: {
-    width: 125,
-    height: 130,
-    backgroundColor: 'yellow',
+    width: 135,
+    height: 110,
+    backgroundColor: '#f4d3ab',
     margin: 10,
     borderRadius: 10,
+    justifyContent:'center',
+    alignItems:'center'
   },
   level: {
     padding: 15,
@@ -97,6 +122,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffa449',
     borderRadius: 10,
+    marginBottom:20
   },
   leveltext: {
     fontSize: 20,
