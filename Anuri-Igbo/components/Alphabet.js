@@ -45,7 +45,12 @@ const Alphabet = () => {
     fontWeight: 'bold',
     marginTop:13
   };
-
+  const  customButtonStyles = {
+    width:50,
+    height:50,
+    backgroundColor:'#f4d3ab',
+    
+  }
   const styles = StyleSheet.create({
     AlphabetView: {
       backgroundColor: '#73030F',
@@ -55,7 +60,8 @@ const Alphabet = () => {
     },
     onerow: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      flexWrap:'wrap',
+      justifyContent: 'center',
     },
   });
 
@@ -65,59 +71,49 @@ const Alphabet = () => {
       <Text style={{fontSize:50, fontWeight:'bold'}}>ALPHABETS</Text>
       <Text style={{fontSize:20, fontWeight:'bold', color:'#ffa449'}}>In Igbo</Text>
       <Text style={{fontSize:15, fontWeight:'bold', color:'#73030F', textAlign:'center',marginTop:20}}>Generally In
-       English Language We Have Twenty Six '26' Alphabets But in Igbo Language We Have Thurty Six Alphabets: </Text>
+       English Language We Have Twenty Six '26' Letters But in Igbo Language We Have Thirty Six Letters : </Text>
     </View>
       <View style={styles.Alphabet}>
         <View style={styles.onerow}>
-          <Button soundFile={A} text="A " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={B} text="B " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={CH} text="CH" textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={D} text="D " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={E} text="E " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={F} text="F " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-        </View>
-        <View style={styles.onerow}>
-          <Button soundFile={G} text="G " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={GB} text="GB" textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={GH} text="GH" textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={GW} text="GW" textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={H} text="H " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={I} text="I " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-        </View>
-        <View style={styles.onerow}>
-          <Button soundFile={Ị} text="Ị " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={J} text="J " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={K} text="K " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={KP} text="KP" textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={KW} text="KW" textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={L} text="L " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-        </View>
-        <View style={styles.onerow}>
-          <Button soundFile={M} text="M " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={N} text="N " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={Ñ} text="Ñ " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={NW} text="NW" textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={NY} text="NY" textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={O} text="O " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-        </View>
-        <View style={styles.onerow}>
-          <Button soundFile={Ọ} text="Ọ " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={P} text="P " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={R} text="R " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={S} text="S " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={SH} text="SH" textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={T} text="T " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-        </View>
-        <View style={styles.onerow}>
-          <Button soundFile={U} text="U " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={Ụ} text="Ụ " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={V} text="V " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={W} text="W " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={Y} text="Y " textStyle={customTextStyles} buttonColor="#f4d3ab" />
-          <Button soundFile={Z} text="Z " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={A} text="A " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={B} text="B " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={CH} text="CH" textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={D} text="D " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={E} text="E " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={F} text="F " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={G} text="G " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={GB} text="GB" textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={GH} text="GH" textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={GW} text="GW" textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={H} text="H " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={I} text="I " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={Ị} text="Ị " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={J} text="J " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={K} text="K " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={KP} text="KP" textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={KW} text="KW" textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={L} text="L " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={M} text="M " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={N} text="N " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={Ñ} text="Ñ " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={NW} text="NW" textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={NY} text="NY" textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={O} text="O " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={Ọ} text="Ọ " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={P} text="P " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={R} text="R " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={S} text="S " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={SH} text="SH" textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={T} text="T " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={U} text="U " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={Ụ} text="Ụ " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={V} text="V " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={W} text="W " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={Y} text="Y " textStyle={customTextStyles} buttonColor="#f4d3ab" />
+          <Button  Button={customButtonStyles} soundFile={Z} text="Z " textStyle={customTextStyles} buttonColor="#f4d3ab" />
         </View>
       </View>
-      <TouchableOpacity style={{alignSelf:'center', alignItems:'center', justifyContent:'center',
+      <TouchableOpacity style={{alignSelf:'center', alignItems:'center', justifyContent:'center', marginBottom:15,
       width:250, height:50, backgroundColor:'#f4ead4', borderRadius:50}}><Text style={{fontSize:18, fontWeight:'bold'}}>Take A Test</Text></TouchableOpacity>
     </ScrollView>
   );

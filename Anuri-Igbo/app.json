@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/do.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.isaacayomide.AnuriIgbo"
     },
     "web": {
       "favicon": "./assets/do.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "598d6c94-8307-4f4d-9802-3253714d6d5e"
+      }
     }
   }
 }

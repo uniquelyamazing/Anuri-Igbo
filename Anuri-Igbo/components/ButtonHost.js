@@ -1,78 +1,106 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Audio } from 'expo-av';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
-export default function ButtonHost({ soundFile, text, textStyle, buttonColor }) {
-  const [sound, setSound] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+export default function ButtonHost({ soundFile, text, buttonColor, textStyle, textStyles, Button, text2, buttonn, pauseButton}) {
+  const soundRef = React.useRef(null);
+  const [playingStatus, setPlayingStatus] = useState('Play');
+  useEffect(() => {
+    return () => {
+      // Clean up the sound when the component is unmounted
+      if (soundRef.current) {
+        soundRef.current.unloadAsync();
+      }
+    };
+  }, []);
 
-  const playSound = async () => {
-    try {
-      console.log('Loading Sound');
-      const { sound } = await Audio.Sound.createAsync(soundFile);
-      setSound(sound);
+  const playRecording = async () => {
+    const { sound } = await Audio.Sound.createAsync(
+      soundFile,
+      {
+        shouldPlay: true,
+        isLooping: true,
+      },
+      updateScreenForSoundStatus
+    );
+    soundRef.current = sound;
+    setPlayingStatus('playing');
+  };
 
-      console.log('Playing Sound');
-      setIsLoading(true);
-      await sound.playAsync();
-      
-    } catch (error) {
-      console.log('Error playing sound', error);
-    } finally {
-      console.log('Sound playback finished');
-      
+  const updateScreenForSoundStatus = (status) => {
+    if (status.isPlaying && playingStatus !== 'playing') {
+      setPlayingStatus('playing');
+    } else if (!status.isPlaying && playingStatus === 'playing') {
+      setPlayingStatus('paused');
     }
   };
 
-  useEffect(() => {
-    return () => {
-      if (sound) {
-        console.log('Unloading Sound');
-        sound.unloadAsync();
+  const pauseAndPlayRecording = async () => {
+    if (soundRef.current) {
+      if (playingStatus === 'playing') {
+        console.log('pausing...');
+        await soundRef.current.pauseAsync();
+        console.log('paused!');
+        setPlayingStatus('paused');
+      } else {
+        console.log('playing...');
+        await soundRef.current.playAsync();
+        console.log('playing!');
+        setPlayingStatus('playing');
       }
-    };
-  }, [sound]);
-  const end = () => {
-    playSound()
-    
-   }
+    }
+  };
+// File A
+
+  const playAndPause = () => {
+    switch (playingStatus) {
+      case 'Play':
+       
+        playRecording();
+        
+        break;
+      case 'paused':
+      case 'playing':
+        pauseAndPlayRecording();
+        break;
+    }
+  };
+  
   return (
-    
-    
-    <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={end}>
-          <Text onLoadEnd={()=> setIsLoading(false)} style={[styles.buttonText, textStyle]}>{text}</Text>
-         <Text style={styles.buttonS}><Ionicons name="volume-high" size={15} color="#ffa449"/ > 
-</Text>
+    <View style={{ backgroundColor:'white', alignItems:'center', margin:5, borderRadius:5, padding:3}}>
+   
+    <TouchableOpacity style={[styles.button, Button, buttonn, {backgroundColor:buttonColor}]} onPress={playAndPause}>
+     
+          <Text style={[styles.buttonText, textStyle]}>{text}</Text>
+          <Text style={[styles.buttonText, textStyles]}>{text2}</Text>
+         
     </TouchableOpacity>
+    <Text style={styles.buttonText}>{playingStatus}</Text>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    width: 50,
-    height: 50,
+   
     borderRadius: 5,
-    marginBottom: 15,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#f4d3ab',
+    shadowColor: 'black',
+    shadowOpacity: 1,
+    shadowOffset: { width: 50, height: 50 },
+    shadowRadius: 8,
+    elevation: 30, 
   },
-  buttonS: {
-   backgroundColor:'#73030F',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    alignSelf: 'flex-end',
-   padding:2
-  },
-  buttonContent: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  
   buttonText: {
     color: 'white',
     fontSize: 16,
     textAlign: 'center',
+    color:'#73030F',
+    marginTop:5,
+    marginBottom:5
   },
 });
