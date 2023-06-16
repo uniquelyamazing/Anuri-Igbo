@@ -19,10 +19,10 @@ import TigerNut   from '../assets/sounds/TigerNut.mp3';
 import WaterMelon from '../assets/sounds/WaterMelon.mp3';
 import Lime       from '../assets/sounds/Lime.mp3';
 import Soursop   from '../assets/sounds/Soursop.mp3';
-const Fruits = () => {
+const Fruits = ({navigation}) => {
     const customTextStyles = {
-      color: 'white',
-      fontSize: 25,
+      color: '#ffa449',
+      fontSize: 30,
       fontWeight: 'bold',
       marginTop:13
     };
@@ -79,7 +79,7 @@ const Fruits = () => {
         
           </View>
         </View>
-        <TouchableOpacity style={{alignSelf:'center', alignItems:'center', justifyContent:'center', marginBottom:15,
+        <TouchableOpacity  onPress={() => navigation.navigate("HomeScreen")} style={{alignSelf:'center', alignItems:'center', justifyContent:'center', marginBottom:15,
       width:250, height:50, backgroundColor:'#f4ead4', borderRadius:50}}><Text style={{fontSize:18, fontWeight:'bold'}}>Take A Test</Text></TouchableOpacity>
       </ScrollView>
       )}

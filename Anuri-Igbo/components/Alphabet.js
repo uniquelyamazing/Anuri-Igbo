@@ -38,10 +38,10 @@ import W from '../assets/sounds/W.mp3';
 import Y from '../assets/sounds/Y.mp3';
 import Z from '../assets/sounds/Z.mp3';
 
-const Alphabet = () => {
+const Alphabet = ({navigation}) => {
   const customTextStyles = {
-    color: 'white',
-    fontSize: 20,
+    color: '#ffa449',
+    fontSize: 25,
     fontWeight: 'bold',
     marginTop:13
   };
@@ -113,7 +113,7 @@ const Alphabet = () => {
           <Button  Button={customButtonStyles} soundFile={Z} text="Z " textStyle={customTextStyles} buttonColor="#f4d3ab" />
         </View>
       </View>
-      <TouchableOpacity style={{alignSelf:'center', alignItems:'center', justifyContent:'center', marginBottom:15,
+      <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")} style={{alignSelf:'center', alignItems:'center', justifyContent:'center', marginBottom:15,
       width:250, height:50, backgroundColor:'#f4ead4', borderRadius:50}}><Text style={{fontSize:18, fontWeight:'bold'}}>Take A Test</Text></TouchableOpacity>
     </ScrollView>
   );

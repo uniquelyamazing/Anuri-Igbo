@@ -10,7 +10,7 @@ import RED from '../assets/sounds/RED.mp3';
 import YELLOW from '../assets/sounds/YELLOW.mp3';
 import WHITE from '../assets/sounds/WHITE.mp3';
 
-const Colors = () => {
+const Colors = ({navigation}) => {
     const customTextStyles = {
       color: 'white',
       fontSize: 25,
@@ -59,7 +59,7 @@ const Colors = () => {
           <Button buttonColor="white" soundFile={WHITE} text="WHITE" textStyle={customTextStylesS} Button={customButtonStyle} />
           </View>
         </View>
-        <TouchableOpacity style={{alignSelf:'center', alignItems:'center',marginBottom:15, justifyContent:'center',
+        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")} style={{alignSelf:'center', alignItems:'center',marginBottom:15, justifyContent:'center',
       width:250, height:50, backgroundColor:'#f4ead4', borderRadius:50}}><Text style={{fontSize:18, fontWeight:'bold'}}>Take A Test</Text></TouchableOpacity>
       </ScrollView>
       )}

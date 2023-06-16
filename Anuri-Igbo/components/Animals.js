@@ -21,10 +21,10 @@ import SQUIRREL from '../assets/sounds/SQUIRREL.mp3';
 import TIGER from '../assets/sounds/TIGER.mp3';
 import TOAD from '../assets/sounds/TOAD.mp3';
 
-const Animals = () => {
+const Animals = ({navigation}) => {
     const customTextStyles = {
-      color: 'white',
-      fontSize: 25,
+      color: '#ffa449',
+      fontSize: 29,
       fontWeight: 'bold',
       marginTop:13
     };
@@ -82,7 +82,7 @@ const Animals = () => {
           <Button buttonColor="#f4d3ab" soundFile={TOAD} textStyles={customTextStyless}    text="TOAD" textStyle={customTextStyles} Button={customButtonStyle} />
           </View>
         </View>
-        <TouchableOpacity style={{alignSelf:'center', alignItems:'center', justifyContent:'center', marginBottom:15,
+        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")} style={{alignSelf:'center', alignItems:'center', justifyContent:'center', marginBottom:15,
       width:250, height:50, backgroundColor:'#f4ead4', borderRadius:50}}><Text style={{fontSize:18, fontWeight:'bold'}}>Take A Test</Text></TouchableOpacity>
       </ScrollView>
       )}

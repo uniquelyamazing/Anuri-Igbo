@@ -10,6 +10,9 @@ import Numbers from '../components/Numbers';
 
 import Animals from '../components/Animals';
 import Colors from '../components/Colors';
+import ResultsScreen from '../components/ResultsScreen';
+import QuizScreen from '../components/QuizScreen';
+import HomeScreen from '../components/HomeScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -18,12 +21,16 @@ export default function AppNavigator() {
   return (
     <NavigationContainer style={styles.View}>
       <Stack.Navigator>
-        <Stack.Screen options={{headerShown: false}} name="Home" component={Home} />
-        <Stack.Screen options={{headerShown: false}} name="Alphabet" component={Alphabet} />
+      
+       <Stack.Screen options={{headerShown: false}} name="Home" component={Home} />
+       <Stack.Screen options={{headerShown: false}} name="Alphabet" component={Alphabet} />
        <Stack.Screen options={{headerShown: false}} name="Numbers" component={Numbers} />
        <Stack.Screen options={{headerShown: false}} name="Fruits" component={Fruits} />
        <Stack.Screen options={{headerShown: false}} name="Colors" component={Colors} />
        <Stack.Screen options={{headerShown: false}} name="Animals" component={Animals} />
+       <Stack.Screen options={{headerShown: false}} name="HomeScreen" component={HomeScreen} />  
+       <Stack.Screen name="Quiz" component={QuizScreen} options={{headerShown:false}}/>
+        <Stack.Screen name="Results" component={ResultsScreen} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

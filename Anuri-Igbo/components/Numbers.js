@@ -115,7 +115,7 @@ import N1Billion from '../assets/sounds/1Billion.mp3';
 import N100 from '../assets/sounds/100.mp3';
 import Animated, { useSharedValue, withTiming, useAnimatedStyle, useAnimatedGestureHandler, runOnJS } from 'react-native-reanimated';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-const Numbers = () => {
+const Numbers = ({navigation}) => {
   const [activeContent, setActiveContent] = useState('content1');
   const fadeAnim = useSharedValue(0);
 
@@ -167,8 +167,8 @@ const Numbers = () => {
   setActiveContent('content3')
   };
   const customTextStyles = {
-    color: 'white',
-    fontSize: 20,
+    color: '#ffa449',
+    fontSize: 25,
     fontWeight: 'bold',
     
   };
@@ -360,7 +360,7 @@ const handler = () => {
       </Animated.View>
       </PanGestureHandler>
       </Animated.View>
-      <TouchableOpacity style={{alignSelf:'center', alignItems:'center', justifyContent:'center', marginBottom:15,
+      <TouchableOpacity  onPress={() => navigation.navigate("HomeScreen")} style={{alignSelf:'center', alignItems:'center', justifyContent:'center', marginBottom:15,
       width:250, height:50, backgroundColor:'#f4ead4', borderRadius:50}}><Text style={{fontSize:18, fontWeight:'bold'}}>Take A Test</Text></TouchableOpacity>
     </ScrollView>
   );
