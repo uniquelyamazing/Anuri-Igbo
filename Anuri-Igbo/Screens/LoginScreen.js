@@ -1,56 +1,47 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import axios from 'axios';
-const LoginScreen = () => {
-  const navigation = useNavigation();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
+import { View, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebaseConfig';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-  const handleLogin = () => {
-    // Send a POST request to the login route on the server
-    axios
-    .post('/auth/login', { username, password, confirmPassword })
-    .then(response => {
-      // Handle the response from the server
-      const data = response.data;
-        if (data.error) {
-          setError(data.error);
-          setMessage('');
-        } else {
-          setMessage(data.message);
-          setError('');
-          // Redirect to the home screen after successful login
-          // Replace 'Home' with the actual name of your home screen component
-          navigation.navigate('Home');
-        }
-      })
-      .catch(error => {
-        setError('An error occurred');
-        console.error('Error:', error);
-      });
+const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    
+      try {
+        const response = await signInWithEmailAndPassword(auth, email, password);
+        console.log(response);
+        Alert.alert('Registration successful');
+        navigation.navigate('Home');
+      } catch (error) {
+        console.log('Registration failed', error.message);
+      }
+    
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
-        placeholder="Username"
-        value={username}
-        onChangeText={text => setUsername(text)}
+        placeholder="Email"
+        onChangeText={(text) => setEmail(text)}
+        value={email}
       />
       <TextInput
         placeholder="Password"
         secureTextEntry
+        onChangeText={(text) => setPassword(text)}
         value={password}
-        onChangeText={text => setPassword(text)}
       />
       <Button title="Login" onPress={handleLogin} />
-      {error ? <Text style={{ color: 'red' }}>{error}</Text> : null}
-      {message ? <Text style={{ color: 'green' }}>{message}</Text> : null}
     </View>
   );
 };
 
-export default LoginScreen;
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    marginTop:20
+  },})
+export default LoginScreen
