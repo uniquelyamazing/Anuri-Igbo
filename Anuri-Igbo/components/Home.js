@@ -1,93 +1,120 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, StyleSheet, Text, ImageBackground, ScrollView, TouchableOpacity, Image } from 'react-native';
-import image from '../assets/background.jpg';
-import fruit from '../assets/fruit.png'
-import animal from '../assets/animal.png'
-import alphabet from '../assets/alphabet.png'
-import number from '../assets/number.png'
+import { auth } from '../firebaseConfig';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { firestore } from '../firebaseConfig';
+import profile from '../assets/profile.png'
+import audioBack from '../assets/audioBack.jpg'
+import Icon from 'react-native-vector-icons/FontAwesome';
 export default function Home({navigation}) {
+
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const q = query(collection(firestore, 'users'), where('userId', '==', auth.currentUser.uid));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          setUsername(doc.data().username);
+        });
+      } catch (error) {
+        console.log('Error fetching username:', error);
+      }
+    };
+  
+    fetchUsername();
+  }, []);
+  
+
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.welcome}>
-          <ImageBackground
-            source={image}
-            style={{
-              flex: 1,
-              width: null,
-              height: null,
-              padding: 20,
-            }}
-          >
-            <Text style={styles.text}>
-              Welcome <Text style={styles.p}>Ayomide</Text>
-            </Text>
-            <Text style={styles.textss}>
-            "Ndewo <Text style={styles.p}>Ayomide</Text>
-            "</Text>
-          <Text style={{marginTop:70, color:'#ffa449', fontSize: 17,fontWeight: 'bold',}}>
-             "Learning Igbo Language in an extraordinary way"
-            </Text>
-          </ImageBackground>
+      <ImageBackground source={audioBack} style={styles.container}>
+        <View  style={styles.Box1}>
+        <View style={{flexDirection:'row', justifyContent:'space-between',alignItems:'center', width:'100%', marginTop:25}}>
+        <View style={{width:40, height:40, backgroundColor:'black', borderRadius:10, justifyContent:'center',  alignItems:'center'}}>
+           <Image source={profile}style={{width:20, height:20,}} />
         </View>
-        <View style={styles.learnBox}>
-          <View style={styles.level}>
-            <Text style={styles.leveltext}>Basic Level</Text>
-          </View>
-          <View style={styles.boxBox}>
-            <TouchableOpacity  onPress={() => navigation.navigate("Alphabet")}style={styles.box}>
-              <Text style={styles.texts}>Alphabets</Text>
-              <Image source={alphabet} style={{width:150, height:50 , resizeMode:'contain'}}/>
-            </TouchableOpacity >
-            <TouchableOpacity   onPress={() => navigation.navigate("Numbers")} style={styles.box}>
-              <Text style={styles.texts}>Numbers</Text>
-              <Image source={number} style={{width:150, height:50 , resizeMode:'contain'}}/>
-            </TouchableOpacity >
-          </View>
-          <View style={styles.boxBox}>
-            <TouchableOpacity onPress={() => navigation.navigate("Colors")} style={styles.box}>
-              <Text style={styles.texts}>Colors</Text>
-              <View style={{flexDirection:'row'}}>
-                <View style={{width:10, height:10, borderRadius:50, backgroundColor:'blue', margin:5 }}></View>
-                <View style={{width:10, height:10, borderRadius:50, backgroundColor:'black', margin:5 }}></View>
-                <View style={{width:10, height:10, borderRadius:50, backgroundColor:'red', margin:5 }}></View>
-                <View style={{width:10, height:10, borderRadius:50, backgroundColor:'yellow', margin:5 }}></View>
-              </View>
-            </TouchableOpacity >
-            <TouchableOpacity onPress={() => navigation.navigate("Animals")} style={styles.box}>
-              <Text style={styles.texts}>Animals</Text>
-              <Image source={animal} style={{width:150, height:50 , resizeMode:'contain'}}/>
-            </TouchableOpacity >
-          </View>
-          <View style={styles.boxBox}>
-            <TouchableOpacity onPress={() => navigation.navigate("Fruits")} style={styles.box}>
-              <Text style={styles.texts}>Fruits</Text>
-              <Image source={fruit} style={{width:150, height:50 , resizeMode:'contain'}}/>
-            </TouchableOpacity >
-            </View>
+        <TouchableOpacity style={{width:40, height:40, borderRadius:10, justifyContent:'center', alignItems:'center',
+       backgroundColor:'white'}} onPress={() => navigation.navigate('Basics')}>
+        <Icon name='chevron-right' size={20} color='black'/></TouchableOpacity>
+           </View>
+            <Text style={{color:'black', fontSize:40,marginTop:20 }}>Welcome {username}</Text>
+           
+           <Text style={{color:'black', fontSize:37,fontWeight:800, }}>Ready To Learn Igbo Language?</Text>
         </View>
-      </View>
+        <View style={styles.Box2}>
+        <Text style={{fontSize:30, fontWeight:800, color:'white'}}>Basics</Text>
+        <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Alphabets</Text>
+        <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Number Numeric</Text>
+        <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Animals Name</Text>
+        <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Types Of Food</Text>
+        <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Name Of Colors</Text>
+        <TouchableOpacity style={{width:40, height:40, borderRadius:10, justifyContent:'center', alignItems:'center', position:'absolute',
+      top:140, right:20, backgroundColor:'white'}} onPress={() => navigation.navigate('Basics')}>
+        <Icon name='chevron-right' size={20} color='black'/></TouchableOpacity>
+        </View>
+        <View style={styles.Box3}>
+        <Text style={{fontSize:30, fontWeight:800, color:'black'}}>Advance</Text>
+        <Text style={{fontSize:13, color:'black', marginTop:7, textAlign:'right'}}>✅     alphabets</Text>
+        <Text style={{fontSize:13, color:'black', marginTop:7, textAlign:'right'}}>✅     alphabets</Text>
+        <Text style={{fontSize:13, color:'black', marginTop:7, textAlign:'right'}}>✅     alphabets</Text>
+        <Text style={{fontSize:13, color:'black', marginTop:7, textAlign:'right'}}>✅     alphabets</Text>
+
+        <TouchableOpacity style={{width:40, height:40, borderRadius:10, justifyContent:'center', alignItems:'center', position:'absolute',
+        top:140, left:20, backgroundColor:'black'}} onPress={() => navigation.navigate('Advance')}>
+          <Icon name='chevron-right' size={20} color='white'/></TouchableOpacity>
+        </View>
+        </ImageBackground>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex:1,
     alignItems: 'center',
-    backgroundColor: 'black',
    
+    justifyContent:'space-between',
+    alignItems:'center',
+    paddingBottom:20,
+    
   },
-  welcome: {
-    width: '100%',
-    backgroundColor: 'white',
-    height: 300,
+  Box1:{
+        width:'100%',
+        height:230,
+        borderRadius:10,
+        resizeMode:'cover',
+       
+       borderRadius:10,
+    borderWidth:1,
+    borderColor:'white',
+    paddingLeft:30,
+    paddingRight:30
   },
-  text: {
-    fontSize: 40,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop:30
+  Box2:{
+    width:'98%',
+    height:200,
+    marginTop:20,
+    transform: [{ rotate: '3deg' }] ,
+    backgroundColor:'black',
+    borderRadius:10,
+    borderWidth:1,
+    borderColor:'white',
+    padding:30
+
+  },
+  Box3:{
+    width:'98%',
+    height:200,
+    marginTop:20,
+    transform: [{ rotate: '-3deg' }] ,
+    backgroundColor:'white',
+    borderRadius:10,
+    borderWidth:1,
+    borderColor:'white',
+    padding:30
+
   },
   textss: {
     fontSize: 40,

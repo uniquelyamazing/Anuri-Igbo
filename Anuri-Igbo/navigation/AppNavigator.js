@@ -13,6 +13,9 @@ import QuizScreen from '../components/QuizScreen';
 import HomeScreen from '../components/HomeScreen';
 import LoginScreen from '../Screens/LoginScreen';
 import RegisterScreen from '../Screens/RegisterScreen';
+import WelcomeScreen from '../Screens/WelcomeScreen';
+import Basics from '../components/Basics';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +23,7 @@ export default function AppNavigator() {
   return (
     <NavigationContainer style={styles.View}>
       <Stack.Navigator>
+        <Stack.Screen options={{ headerShown: false }} name="welcome" component={WelcomeScreen} />
         <Stack.Screen options={{ headerShown: false }} name="Register" component={RegisterScreen} />
         <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
         <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
@@ -29,6 +33,7 @@ export default function AppNavigator() {
         <Stack.Screen options={{ headerShown: false }} name="Colors" component={Colors} />
         <Stack.Screen options={{ headerShown: false }} name="Animals" component={Animals} />
         <Stack.Screen options={{ headerShown: false }} name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="Basics" component={Basics} />
         <Stack.Screen name="Quiz" component={QuizScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Results" component={ResultsScreen} options={{ headerShown: false }} />
       </Stack.Navigator>

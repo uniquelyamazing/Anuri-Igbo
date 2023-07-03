@@ -1,69 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
 import { Audio } from 'expo-av';
 import { Ionicons } from '@expo/vector-icons';
+import audioWave from '../assets/audio.jpg'
 
 export default function ButtonHost({ soundFile, text, texxt, buttonColor,buttonQuiz, textStyle, textStyles, Button, text2, buttonn, pauseButton}) {
-  const soundRef = React.useRef(null);
-  const [playingStatus, setPlayingStatus] = useState('Play');
+  const [sound, setSound] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   useEffect(() => {
     return () => {
       // Clean up the sound when the component is unmounted
-      if (soundRef.current) {
-        soundRef.current.unloadAsync();
+      if (sound) {
+        sound.unloadAsync();
       }
     };
   }, []);
 
-  const playRecording = async () => {
-    const { sound } = await Audio.Sound.createAsync(
+  const loadSound = async () => {
+    if (sound) {
+      await sound.unloadAsync();
+    }
+
+    const { sound: newSound } = await Audio.Sound.createAsync(
       soundFile,
-      {
-        shouldPlay: true,
-        isLooping: true,
-      },
+      { shouldPlay: true, isLooping: false },
       updateScreenForSoundStatus
     );
-    soundRef.current = sound;
-    setPlayingStatus('playing');
+
+    setSound(newSound);
+    setIsPlaying(true);
+  };
+
+  const unloadSound = async () => {
+    if (sound) {
+      await sound.stopAsync();
+      await sound.unloadAsync();
+      setSound(null);
+      setIsPlaying(false);
+    }
   };
 
   const updateScreenForSoundStatus = (status) => {
-    if (status.isPlaying && playingStatus !== 'playing') {
-      setPlayingStatus('playing');
-    } else if (!status.isPlaying && playingStatus === 'playing') {
-      setPlayingStatus('paused');
+    if (status.isLoaded && status.isPlaying && !isPlaying) {
+      setIsPlaying(true);
+    } else if (!status.isPlaying && isPlaying) {
+      setIsPlaying(false);
     }
   };
 
-  const pauseAndPlayRecording = async () => {
-    if (soundRef.current) {
-      if (playingStatus === 'playing') {
-        console.log('pausing...');
-        await soundRef.current.pauseAsync();
-        console.log('paused!');
-        setPlayingStatus('paused');
-      } else {
-        console.log('playing...');
-        await soundRef.current.playAsync();
-        console.log('playing!');
-        setPlayingStatus('playing');
-      }
-    }
-  };
-// File A
-
-  const playAndPause = () => {
-    switch (playingStatus) {
-      case 'Play':
-       
-        playRecording();
-        
-        break;
-      case 'paused':
-      case 'playing':
-        pauseAndPlayRecording();
-        break;
+  const handleButtonClicks= async () => {
+    if (isPlaying) {
+      await unloadSound();
+    } else {
+      await loadSound();
     }
   };
   const [isIconVisible, setIsIconVisible] = useState(false);
@@ -72,23 +61,23 @@ export default function ButtonHost({ soundFile, text, texxt, buttonColor,buttonQ
     setIsIconVisible(!isIconVisible);
   };
   const Press = () => {
-    playAndPause()
+    handleButtonClicks()
     handleButtonClick()
   }
   return (
-    <View style={{ backgroundColor:'white', alignItems:'center', margin:5, borderRadius:5, padding:3}}>
-   
-    <TouchableOpacity style={[styles.button, Button, buttonn, buttonQuiz, {backgroundColor:buttonColor}]} onPress={Press}>
-     
-          <Text style={[styles.buttonText, textStyle]}>{text}</Text>
-          <Text style={[styles.buttonText, textStyles]}>{text2}</Text>
-         
-    </TouchableOpacity>
+    <View style={{ height:'90%', alignItems:'center', margin:5, borderRadius:5, padding:3, justifyContent:'space-between', }}>
+    <View style={{ width: '100%', height: 370, backgroundColor: 'black', borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 200, color: 'white', fontWeight: 800 }}>{text}</Text>
+              </View>
+      <Image source={audioWave} style={{width:'80%', height:50, borderRadius:50}}/>
+    <TouchableOpacity style={styles.button } onPress={Press}>
     {isIconVisible ? (
-        <Ionicons name="volume-high" size={15} style={styles.buttonText} />
-      ) : (
-        <Ionicons name="volume-off" size={15} style={styles.buttonText} />
-      )}
+      <Ionicons name="pause" size={25} style={styles.buttonText} />
+    ) : (
+      <Ionicons name="play" size={25} style={styles.buttonText} />
+    )}
+    </TouchableOpacity>
+    
          
     </View>
   );
@@ -96,11 +85,12 @@ export default function ButtonHost({ soundFile, text, texxt, buttonColor,buttonQ
 
 const styles = StyleSheet.create({
   button: {
-   
-    borderRadius: 5,
+     width:80,
+     height:80,
+    borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f4d3ab',
+    backgroundColor: 'black',
     shadowColor: 'black',
     shadowOpacity: 1,
     shadowOffset: { width: 50, height: 50 },
@@ -110,9 +100,9 @@ const styles = StyleSheet.create({
   
   buttonText: {
    
-    fontSize: 16,
+   
     textAlign: 'center',
-    color:'#73030F',
+    color:'white',
     marginTop:5,
     marginBottom:5
   },

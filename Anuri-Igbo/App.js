@@ -1,21 +1,24 @@
-import { useEffect } from 'react';
-import { auth } from './firebaseConfig';
+import React, { useEffect } from 'react';
 
 import AppNavigator from './navigation/AppNavigator';
+import { View } from 'react-native';
+import LoginScreen from './Screens/LoginScreen';
+import Home from './components/Home';
+import Slider from './components/Slider';
+import AlphabetsData from './components/Alphabet';
+import Basics from './components/Basics';
+import PageSlider from './Screens/DashBoard';
+import Numbers from './components/Numbers';
+import Fruits from './components/Fruits';
+import Animals from './components/Animals';
+import Colors from './components/Colors';
 
-const App = ({ navigation }) => {
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.navigate('Home');
-      } else {
-        navigation.navigate('Login');
-      }
-    });
-
-    return () => unsubscribe(); // Clean up the event listener
-  }, []);
-
-  // Rest of your app code
+export default function App (){
+ 
+   
+ return (
+  <View style={{flex:1}} >
+         <AppNavigator/>
+  </View>
+ )
 };
-export default App
