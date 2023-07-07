@@ -18,7 +18,7 @@ const WelcomeScreen = ({navigation}) => {
        <Text style={{fontSize:20}} >Our Unique Technic Will Turn The Learning Process Into An Incredible Adventure</Text>
       </View>
       <View style={{marginTop:30}}>
-      <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.button}>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.button}>
       <Icon name='chevron-right' size={20} color='white'/>
       </TouchableOpacity>
       </View>

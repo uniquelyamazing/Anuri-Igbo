@@ -12,6 +12,10 @@ import Numbers from './components/Numbers';
 import Fruits from './components/Fruits';
 import Animals from './components/Animals';
 import Colors from './components/Colors';
+import Family from './components/Family';
+import Words from './components/Words';
+//import QuizScreen from './components/QuizScreen';
+//import ResultScreen from './components/ResultsScreen';
 
 export default function App (){
  

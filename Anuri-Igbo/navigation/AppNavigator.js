@@ -8,13 +8,14 @@ import Fruits from '../components/Fruits';
 import Numbers from '../components/Numbers';
 import Animals from '../components/Animals';
 import Colors from '../components/Colors';
-import ResultsScreen from '../components/ResultsScreen';
-import QuizScreen from '../components/QuizScreen';
+import ResultsScreen from '../components/QuizFolder/ResultsScreen';
+import QuizScreen from '../components/QuizFolder/QuizScreen';
 import HomeScreen from '../components/HomeScreen';
 import LoginScreen from '../Screens/LoginScreen';
 import RegisterScreen from '../Screens/RegisterScreen';
 import WelcomeScreen from '../Screens/WelcomeScreen';
 import Basics from '../components/Basics';
+import Family from '../components/Family';
 
 
 const Stack = createNativeStackNavigator();
@@ -35,6 +36,7 @@ export default function AppNavigator() {
         <Stack.Screen options={{ headerShown: false }} name="HomeScreen" component={HomeScreen} />
         <Stack.Screen options={{ headerShown: false }} name="Basics" component={Basics} />
         <Stack.Screen name="Quiz" component={QuizScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Family" component={Family} options={{ headerShown: false }} />
         <Stack.Screen name="Results" component={ResultsScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>

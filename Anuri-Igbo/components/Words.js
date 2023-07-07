@@ -4,44 +4,45 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Audio } from 'expo-av';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import alph from '../assets/alph.jpg'
-export default function AlphabetsData({navigation}) {
+export default function Words({navigation}) {
   const [sounds, setSounds] = useState([
-    { name: 'A',  source: require('../assets/sounds/A.mp3') },
-    { name: 'B',  source: require('../assets/sounds/B.mp3') },
-    { name: 'CH', source: require('../assets/sounds/CH.mp3') },
-    { name: 'D',  source: require('../assets/sounds/D.mp3') },
-    { name: 'E',  source: require('../assets/sounds/E.mp3') },
-    { name: 'F',  source: require('../assets/sounds/F.mp3') },
-    { name: 'G',  source: require('../assets/sounds/G.mp3') },
-    { name: 'GB', source: require('../assets/sounds/GB.mp3') },
-    { name: 'GH', source: require('../assets/sounds/GH.mp3') },
-    { name: 'GW', source: require('../assets/sounds/GW.mp3') },
-    { name: 'H',  source: require('../assets/sounds/H.mp3') },
-    { name: 'I',  source: require('../assets/sounds/I.mp3') },
-    { name: 'Ị',  source: require('../assets/sounds/Ị.mp3') },
-    { name: 'J',  source: require('../assets/sounds/J.mp3') },
-    { name: 'K',  source: require('../assets/sounds/K.mp3') },
-    { name: 'KP', source: require('../assets/sounds/KP.mp3') },
-    { name: 'KW', source: require('../assets/sounds/KW.mp3') },
-    { name: 'L',  source: require('../assets/sounds/L.mp3') },
-    { name: 'M',  source: require('../assets/sounds/M.mp3') },
-    { name: 'N',  source: require('../assets/sounds/N.mp3') },
-    { name: 'Ñ',  source: require('../assets/sounds/Ñ.mp3') },
-    { name: 'NW', source: require('../assets/sounds/NW.mp3') },
-    { name: 'NY', source: require('../assets/sounds/NY.mp3') },
-    { name: 'O',  source: require('../assets/sounds/O.mp3') },
-    { name: 'Ọ',  source: require('../assets/sounds/Ọ.mp3') },
-    { name: 'P',  source: require('../assets/sounds/P.mp3') },
-    { name: 'R',  source: require('../assets/sounds/R.mp3') },
-    { name: 'S',  source: require('../assets/sounds/S.mp3') },
-    { name: 'SH', source: require('../assets/sounds/SH.mp3') },
-    { name: 'T',  source: require('../assets/sounds/T.mp3') },
-    { name: 'U',  source: require('../assets/sounds/U.mp3') },
-    { name: 'Ụ',  source: require('../assets/sounds/Ụ.mp3') },
-    { name: 'V',  source: require('../assets/sounds/V.mp3') },
-    { name: 'W',  source: require('../assets/sounds/W.mp3') },
-    { name: 'Y',  source: require('../assets/sounds/Y.mp3') },
-    { name: 'Z',  source: require('../assets/sounds/Z.mp3') },
+    {   name: 'animals',  source: require('../assets/sounds/animals.mp3') },
+ {name: 'bag',  source: require('../assets/sounds/bag.mp3') },
+ {name: 'bedsheet',  source: require('../assets/sounds/bedsheet.mp3') },
+ {name: 'bicycle',  source: require('../assets/sounds/bicycle.mp3') },
+ {name: 'broom',  source: require('../assets/sounds/broom.mp3') },
+ {name: 'chair',  source: require('../assets/sounds/chair.mp3') },
+ {name: 'cloth',  source: require('../assets/sounds/cloth.mp3') },
+ {name: 'cup',  source: require('../assets/sounds/cup.mp3') },
+ {name: 'FAMILY',  source: require('../assets/sounds/FAMILY.mp3') },
+ {name: 'follow me',  source: require('../assets/sounds/followme.mp3') },
+ {name: 'Gods child',  source: require('../assets/sounds/Godschild.mp3') },
+ {name: 'good night',  source: require('../assets/sounds/goodnight.mp3') },
+ {name: 'hat',  source: require('../assets/sounds/hat.mp3') },
+ {name: 'have patience',  source: require('../assets/sounds/havepatience.mp3') },
+ {name: 'how are you',  source: require('../assets/sounds/howareyou.mp3') },
+ {name: 'how is your family',  source: require('../assets/sounds/howisyourfamily.mp3') },
+ {name: 'Hi  ',  source: require('../assets/sounds/hy.mp3') },
+ {name: 'it is good',  source: require('../assets/sounds/itisgood.mp3') },
+ {name: 'it is bad',  source: require('../assets/sounds/itisbad.mp3') },
+ {name: 'leave the way',  source: require('../assets/sounds/leavetheway.mp3') },
+ {name: 'open the door',  source: require('../assets/sounds/openthedoor.mp3') },
+ {name: 'our house',  source: require('../assets/sounds/ourhouse.mp3') },
+ {name: 'our church',  source: require('../assets/sounds/ourchurch.mp3') },
+ {name: 'pot',  source: require('../assets/sounds/pot.mp3') },
+ {name: 'scarf',  source: require('../assets/sounds/scarf.mp3') },
+ {name: 'shoe',  source: require('../assets/sounds/shoe.mp3') },
+ {name: 'soap',  source: require('../assets/sounds/soap.mp3') },
+ {name: 'sponge',  source: require('../assets/sounds/sponge.mp3') },
+ {name: 'spoon',  source: require('../assets/sounds/spoon.mp3') },
+ {name: 'table',  source: require('../assets/sounds/table.mp3') },
+ {name: 'takeiteasy',  source: require('../assets/sounds/takeiteasy.mp3') },
+ {name: 'television',  source: require('../assets/sounds/television.mp3') },
+ {name: 'thank you',  source: require('../assets/sounds/thankyou.mp3') },
+ {name: 'welcome',  source: require('../assets/sounds/welcome.mp3') },
+ {name: 'women',  source: require('../assets/sounds/women.mp3') },
+    
+   
   ]);
   const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
   const [sound, setSound] = useState(null);
@@ -116,7 +117,7 @@ export default function AlphabetsData({navigation}) {
   }
 
   function handleContinue() {
-    navigation.navigate('Quiz')
+    // Handle continue action
     console.log('Continue to next page or lesson');
     setShowCompletionModal(false);
   }
@@ -127,7 +128,6 @@ export default function AlphabetsData({navigation}) {
     setCurrentSoundIndex(0);
     setShowCompletionModal(false);
   }
-  const [refreshKey, setRefreshKey] = useState(0);
   const handleRfresh = ()  => {
     setRefreshKey(refreshKey + 1);
     handleToggleDropdown(false)
@@ -137,13 +137,14 @@ export default function AlphabetsData({navigation}) {
   const handleToggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  
   return (
     <View style={{ flex: 1,  alignItems: 'center' , backgroundColor:'black'}} key={refreshKey}>
     <View style={styles.nowplayingContainer}>
     <TouchableOpacity style={styles.nowPlayingIcon} onPress={() => navigation.navigate('Basics')}>
       <Icon name='chevron-left' size={15} color='white'/>
       </TouchableOpacity>
-      <Text style={styles.nowPlayingText}>Now Learning Alphabets</Text>
+      <Text style={styles.nowPlayingText}>Now Learning Words</Text>
       <TouchableOpacity style={styles.nowPlayingIcon} onPress={() => handleToggleDropdown(true)}>
       <Icon name="ellipsis-v" size={24} color="white" />
         </TouchableOpacity>
@@ -152,19 +153,18 @@ export default function AlphabetsData({navigation}) {
           <Text style={{color:'white'}}>Refresh</Text>
           </TouchableOpacity>
         )}
-      
      </View>
      <ImageBackground source={alph} stlye={{ resizeMode:'cover'}}>
   <View source={alph} style={styles.alph}>
  
-      <Text style={{ fontSize:100, fontWeight:800,color:'white' }}>
+      <Text style={{ fontSize:50, fontWeight:800,color:'white' }}>
        {sounds[currentSoundIndex].name}
       </Text>
       
       </View>
       </ImageBackground>
       <Text style={{ fontSize:30, fontWeight:800,color:'white', marginTop:10 }}>
-       {sounds[currentSoundIndex].name}
+       {sounds[currentSoundIndex].name2}
       </Text>
       <Text style={{ marginTop: 10, color:'white' }}>
       <Text style={{fontSize:20}}>Progress Number : </Text>{currentSoundIndex + 1}/{sounds.length}
@@ -200,7 +200,7 @@ export default function AlphabetsData({navigation}) {
           <View style={[styles.progressBar, { width: `${(savedProgress / sounds.length) * 100}%` }]} />
         </View>
         <TouchableOpacity style={styles.button} onPress={handleContinue}>
-          <Text style={styles.buttonText}>Take Quiz</Text>
+          <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleRetakeLesson}>
           <Text style={styles.buttonText}>Retake Lesson</Text>

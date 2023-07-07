@@ -203,17 +203,32 @@ export default function Numbers ({navigation}){
     setCurrentSoundIndex(0);
     setShowCompletionModal(false);
   }
+  const [refreshKey, setRefreshKey] = useState(0);
+  const handleRfresh = ()  => {
+    setRefreshKey(refreshKey + 1);
+    handleToggleDropdown(false)
+    handleRetakeLesson()
+  }
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const handleToggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   return (
-    <View style={{ flex: 1,  alignItems: 'center' , backgroundColor:'black'}}>
+    <View style={{ flex: 1,  alignItems: 'center' , backgroundColor:'black'}} key={refreshKey}>
     <View style={styles.nowplayingContainer}>
     <TouchableOpacity style={styles.nowPlayingIcon} onPress={() => navigation.navigate('Basics')}>
       <Icon name='chevron-left' size={15} color='white'/>
       </TouchableOpacity>
       <Text style={styles.nowPlayingText}>Now Learning Numbers</Text>
-    <TouchableOpacity style={styles.nowPlayingIcon} onPress={() => navigation.navigate('Alphabet')}>
-    <Icon name="ellipsis-v" size={24} color="white" />
-      </TouchableOpacity>
+      <TouchableOpacity style={styles.nowPlayingIcon} onPress={() => handleToggleDropdown(true)}>
+      <Icon name="ellipsis-v" size={24} color="white" />
+        </TouchableOpacity>
+        {isDropdownOpen && (
+          <TouchableOpacity  onPress={handleRfresh} style={{width:50, height:39, justifyContent:'center',alignItems:'center', backgroundColor:'black'}}>
+          <Text style={{color:'white'}}>Refresh</Text>
+          </TouchableOpacity>
+        )}
      </View>
      <ImageBackground source={alph} stlye={{ resizeMode:'cover'}}>
   <View source={alph} style={styles.alph}>

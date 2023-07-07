@@ -70,7 +70,7 @@ export default function Basics ({navigation}) {
          <View style={styles.BoxSmall}><Text style={{fontSize: 25, fontWeight:700, color:'black'}}>Fruits</Text>
          <Image style={{width:160, height:50, alignSelf:'center'}} source={fruit}/>
          <TouchableOpacity style={{width:30, height:30, alignSelf:'flex-end', borderRadius:10, justifyContent:'center', alignItems:'center', 
-        backgroundColor:'gray'}} onPress={() => navigation.navigate('Fruit')}>
+        backgroundColor:'gray'}} onPress={() => navigation.navigate('Fruits')}>
           <Icon name='chevron-right' size={15} color='white'/></TouchableOpacity>
          </View>
          </View>

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, SafeAreaView, View, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
-import questions from "../data/questions";
+import questions from "../../data/questions";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
-const QuizScreen = () => {
-  const navigation = useNavigation();
+const QuizScreen = ({navigation}) => {
+  
   const data = questions;
   const totalQuestions = data.length;
   // points
@@ -60,7 +60,7 @@ const QuizScreen = () => {
       }
     };
 
-    interval = setTimeout(myInterval, 1500);
+    interval = setTimeout(myInterval, 15000);
 
     // clean up
     return () => {
