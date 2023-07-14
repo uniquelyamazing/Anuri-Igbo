@@ -1,316 +1,325 @@
 import React, { useState } from 'react';
 import QuizSound from './QuizSound'
-import N53 from '../assets/sounds/53.mp3'
+import A from '../assets/sounds/A.mp3'
+import B from '../assets/sounds/B.mp3'
+import D from '../assets/sounds/D.mp3'
+import SH from '../assets/sounds/SH.mp3'
+import Z from '../assets/sounds/Z.mp3'
+import L from '../assets/sounds/L.mp3'
+import KP from '../assets/sounds/KP.mp3'
+import P from '../assets/sounds/A.mp3'
+import E from '../assets/sounds/A.mp3'
+import S from '../assets/sounds/S.mp3'
 
    
 export default [
     {
         
-        question: "What is the correct pronounciation for number '53'?",
+        question: (<QuizSound soundFile={A}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"South America",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"NY",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Europe",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"KP",
+               
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Asia",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"A",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"India",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Z",
+                
             },
         ],
         correctAnswerIndex: 2
     },
     {
-        question: "Which continent has the highest population density? ",
+        question: (<QuizSound soundFile={B}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Asia",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"CH",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"South Africa",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"B",
+                
             },
             {
                 id:"2",
-                options:"C",
+                options:"D",
                 answer:"Australia",
-                sound:(<QuizSound soundFile={N53}/>)
+                
             },
             {
-                id:"0",
-                options:"D",
+                id:"3",
+                options:"NW",
                 answer:"Antarctica",
-                sound:(<QuizSound soundFile={N53}/>)
+                
             },
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 1,
 
     },
     {
-        question: "what is 5X5",
+        question: (<QuizSound soundFile={D}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"20",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"GH",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"25",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"CH",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"10",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"W",
+                
+            },
+            {
+                id:"3",
+                options:"D",
+                answer:"D",
+                
+            },
+        ],
+        correctAnswerIndex: 3
+    },
+    {
+        question: (<QuizSound soundFile={KP}/>),
+        options:[
+            {
+                id:"0",
+                options:"A",
+                answer:"GB",
+                
+            },
+            {
+                id:"1",
+                options:"B",
+                answer:"A",
+                
+            },
+            {
+                id:"2",
+                options:"C",
+                answer:"KP",
+                
+            },
+            {
+                id:"3",
+                options:"D",
+                answer:"O",
+                
+            },
+        ],
+        correctAnswerIndex: 2
+    },
+    {
+        question: (<QuizSound soundFile={SH}/>),
+        options:[
+            {
+                id:"0",
+                options:"A",
+                answer:"SH",
+                
+            },
+            {
+                id:"1",
+                options:"B",
+                answer:"NW",
+                
+            },
+            {
+                id:"2",
+                options:"C",
+                answer:"GH",
+                
+            },
+            {
+                id:"3",
+                options:"D",
+                answer:"K",
+                
+                
+            },
+        ],
+        correctAnswerIndex: 0
+    },
+    {
+        question: (<QuizSound soundFile={Z}/>),
+        options:[
+            {
+                id:"0",
+                options:"A",
+                answer:"M",
+                
+            },
+            {
+                id:"1",
+                options:"B",
+                answer:"Z",
+                
+            },
+            {
+                id:"2",
+                options:"C",
+                answer:"U",
+                
             },
             {
                 id:"0",
                 options:"D",
-                answer:"30",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"I",
+                
+                
             },
         ],
         correctAnswerIndex: 1
     },
     {
-        question: "what is the square root of 169",
+        question: (<QuizSound soundFile={S}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"20",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"P",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"23",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"U",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"13",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"T",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"23",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"S",
+                
+                
             },
         ],
-        correctAnswerIndex: 2
+        correctAnswerIndex: 3
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={P}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"P",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"R",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"SH<",
+                
+            },
+            {
+                id:"3",
+                options:"D",
+                answer:"F",
+                
+                
+            },
+        ],
+        correctAnswerIndex: 0
+    },
+    {
+        question: (<QuizSound soundFile={L}/>),
+        options:[
+            {
+                id:"0",
+                options:"A",
+                answer:"E",
+                
+            },
+            {
+                id:"1",
+                options:"B",
+                answer:"J",
+                
+            },
+            {
+                id:"2",
+                options:"C",
+                answer:"L",
+                
             },
             {
                 id:"0",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"M",
+                
                 
             },
         ],
         correctAnswerIndex: 2
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={E}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"GH",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"E",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"N<",
+                
             },
             {
                 id:"0",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"NK",
+                
                 
             },
         ],
-        correctAnswerIndex: 2
-    },
-    {
-        question: "What is the Smallest Ocean?",
-        options:[
-            {
-                id:"0",
-                options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"1",
-                options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"2",
-                options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-                
-            },
-        ],
-        correctAnswerIndex: 2
-    },
-    {
-        question: "What is the Smallest Ocean?",
-        options:[
-            {
-                id:"0",
-                options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"1",
-                options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"2",
-                options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-                
-            },
-        ],
-        correctAnswerIndex: 2
-    },
-    {
-        question: "What is the Smallest Ocean?",
-        options:[
-            {
-                id:"0",
-                options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"1",
-                options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"2",
-                options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-                
-            },
-        ],
-        correctAnswerIndex: 2
-    },
-    {
-        question: "What is the Smallest Ocean?",
-        options:[
-            {
-                id:"0",
-                options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"1",
-                options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"2",
-                options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-                
-            },
-        ],
-        correctAnswerIndex: 2
+        correctAnswerIndex: 1
     },
 ]
 

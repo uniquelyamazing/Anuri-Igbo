@@ -1,319 +1,326 @@
 import React, { useState } from 'react';
 import QuizSound from './QuizSound'
-import N53 from '../assets/sounds/53.mp3'
+import LIZARD from '../assets/sounds/LIZARD.mp3'
+import LION from '../assets/sounds/LION.mp3'
+import TIGER from '../assets/sounds/TIGER.mp3'
+import PIG from '../assets/sounds/PIG.mp3'
+import FROG from '../assets/sounds/FROG.mp3'
+import DONKEY from '../assets/sounds/DONKEY.mp3'
+import SQUIRREL from '../assets/sounds/SQUIRREL.mp3'
+import SCORPION from '../assets/sounds/SCORPION.mp3'
+import ANTELOPE from '../assets/sounds/ANTELOPE.mp3'
+import CAT from '../assets/sounds/CAT.mp3'
 
    
 export default [
     {
         
-        question: "What is the correct pronounciation for number '53'?",
+        question: (<QuizSound soundFile={LIZARD}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"South America",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Scorpion",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Europe",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Donkey",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Asia",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Lizard",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"India",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Horse",
+                
             },
         ],
         correctAnswerIndex: 2
     },
     {
-        question: "Which continent has the highest population density? ",
+        question: (<QuizSound soundFile={DONKEY}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Asia",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Frog",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"South Africa",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Tiger",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Australia",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Scorpion",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"Antarctica",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Donkey",
+                
             },
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 3
 
     },
     {
-        question: "what is 5X5",
+        question: (<QuizSound soundFile={SQUIRREL}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"20",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Cow",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"25",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Squirrel",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"10",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Elephant",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"30",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Donkey",
+                
             },
         ],
         correctAnswerIndex: 1
     },
     {
-        question: "what is the square root of 169",
+        question: (<QuizSound soundFile={LION}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"20",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Lizard",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"23",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Cow",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"13",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Lion",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"23",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-        ],
-        correctAnswerIndex: 2
-    },
-    {
-        question: "What is the Smallest Ocean?",
-        options:[
-            {
-                id:"0",
-                options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"1",
-                options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"2",
-                options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Elephant",
                 
             },
         ],
         correctAnswerIndex: 2
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={PIG}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"pig",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Antelope",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Frog",
+                
+            },
+            {
+                id:"3",
+                options:"D",
+                answer:"Tiger",
+                
+                
+            },
+        ],
+        correctAnswerIndex: 0
+    },
+    {
+        question: (<QuizSound soundFile={FROG}/>),
+        options:[
+            {
+                id:"0",
+                options:"A",
+                answer:"Scorpion",
+                
+            },
+            {
+                id:"1",
+                options:"B",
+                answer:"Frog",
+                
+            },
+            {
+                id:"2",
+                options:"C",
+                answer:"cow<",
+                
+            },
+            {
+                id:"3",
+                options:"D",
+                answer:"Gorilla",
+                
+                
+            },
+        ],
+        correctAnswerIndex: 1
+    },
+    {
+        question: (<QuizSound soundFile={TIGER}/>),
+        options:[
+            {
+                id:"0",
+                options:"A",
+                answer:"Leopard",
+                
+            },
+            {
+                id:"1",
+                options:"B",
+                answer:"Snake",
+                
+            },
+            {
+                id:"2",
+                options:"C",
+                answer:"Donkey",
+                
+            },
+            {
+                id:"3",
+                options:"D",
+                answer:"Tiger",
+                
+                
+            },
+        ],
+        correctAnswerIndex: 3
+    },
+    {
+        question: (<QuizSound soundFile={CAT}/>),
+        options:[
+            {
+                id:"0",
+                options:"A",
+                answer:"Gorilla",
+                
+            },
+            {
+                id:"1",
+                options:"B",
+                answer:"Elephant",
+                
+            },
+            {
+                id:"2",
+                options:"C",
+                answer:"Cat",
+                
             },
             {
                 id:"0",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Pig",
+                
                 
             },
         ],
         correctAnswerIndex: 2
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={ANTELOPE}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Antelope",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Cow",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Leopard<",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Horse",
+                
                 
             },
         ],
-        correctAnswerIndex: 2
+        correctAnswerIndex: 0
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={SCORPION}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Lion",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Snake",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Goat<",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Scorpion",
+                
                 
             },
         ],
-        correctAnswerIndex: 2
-    },
-    {
-        question: "What is the Smallest Ocean?",
-        options:[
-            {
-                id:"0",
-                options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"1",
-                options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"2",
-                options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-                
-            },
-        ],
-        correctAnswerIndex: 2
-    },
-    {
-        question: "What is the Smallest Ocean?",
-        options:[
-            {
-                id:"0",
-                options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"1",
-                options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"2",
-                options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-                
-            },
-        ],
-        correctAnswerIndex: 2
+        correctAnswerIndex: 3
     },
 ]
-
-
 
 

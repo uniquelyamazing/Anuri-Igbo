@@ -1,312 +1,319 @@
 import React, { useState } from 'react';
 import QuizSound from './QuizSound'
-import N53 from '../assets/sounds/53.mp3'
-
-   
+import GRANDMA from '../assets/sounds/GRANDMA.mp3'
+import TWINS from '../assets/sounds/TWINS.mp3'
+import SISTER from '../assets/sounds/SISTER.mp3'
+import MOTHER from '../assets/sounds/MOTHER.mp3'
+import HUSBAND from '../assets/sounds/HUSBAND.mp3'
+import WIFE from '../assets/sounds/WIFE.mp3'
+import GRANDPA from '../assets/sounds/GRANDPA.mp3'
+import SIBLINGS from '../assets/sounds/SIBLINGS.mp3'
+import FEMALECHILD from '../assets/sounds/FEMALECHILD.mp3'
+import BROTHER from '../assets/sounds/BROTHER.mp3'
 export default [
     {
         
-        question: "What is the correct pronounciation for number '53'?",
+        question: (<QuizSound soundFile={GRANDMA}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"South America",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Mother",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Europe",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Father",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Asia",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Grand Mother",
+                
             },
             {
                 id:"0",
                 options:"D",
-                answer:"India",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Grand Father",
+                
             },
         ],
         correctAnswerIndex: 2
     },
     {
-        question: "Which continent has the highest population density? ",
+        question: (<QuizSound soundFile={TWINS}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Asia",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Grnd Pa",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"South Africa",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Female Child",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Australia",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Siblings",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"Antarctica",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Twins",
+                
             },
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 3,
 
     },
     {
-        question: "what is 5X5",
+        question: (<QuizSound soundFile={SISTER}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"20",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Brother",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"25",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Sister",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"10",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Siblings",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"30",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Aunty",
+                
             },
         ],
         correctAnswerIndex: 1
     },
     {
-        question: "what is the square root of 169",
+        question: (<QuizSound soundFile={MOTHER}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"20",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Male Child",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"23",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Twin",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"13",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Mother",
+                
             },
             {
                 id:"0",
                 options:"D",
-                answer:"23",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-        ],
-        correctAnswerIndex: 2
-    },
-    {
-        question: "What is the Smallest Ocean?",
-        options:[
-            {
-                id:"0",
-                options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"1",
-                options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"2",
-                options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Kinsmen",
                 
             },
         ],
         correctAnswerIndex: 2
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={HUSBAND}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Husband",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Wife",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Aunt",
+                
+            },
+            {
+                id:"3",
+                options:"D",
+                answer:"Twin",
+                
+                
+            },
+        ],
+        correctAnswerIndex: 0
+    },
+    {
+        question: (<QuizSound soundFile={WIFE}/>),
+        options:[
+            {
+                id:"0",
+                options:"A",
+                answer:"KindMen",
+                
+            },
+            {
+                id:"1",
+                options:"B",
+                answer:"GrandMa",
+                
+            },
+            {
+                id:"2",
+                options:"C",
+                answer:"Wife",
+                
             },
             {
                 id:"0",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Sister",
+                
                 
             },
         ],
         correctAnswerIndex: 2
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={GRANDPA}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Male Child",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Twin",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"GrandPa",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Mother",
+                
                 
             },
         ],
         correctAnswerIndex: 2
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={BROTHER}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Father",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Grand Children",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Siblings",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Brother",
+                
                 
             },
         ],
-        correctAnswerIndex: 2
+        correctAnswerIndex: 3
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={FEMALECHILD}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Male Child",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Female Child",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Father",
+                
             },
             {
                 id:"0",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Aunt",
+                
                 
             },
         ],
-        correctAnswerIndex: 2
+        correctAnswerIndex: 1
     },
     {
-        question: "What is the Smallest Ocean?",
+        question: (<QuizSound soundFile={SIBLINGS}/>),
         options:[
             {
                 id:"0",
                 options:"A",
-                answer:"Atlantic Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Twin",
+                
             },
             {
                 id:"1",
                 options:"B",
-                answer:"Pacific Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Husband",
+                
             },
             {
                 id:"2",
                 options:"C",
-                answer:"Arctic Ocean<",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Siblings",
+                
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
-                answer:"Indian Ocean",
-                sound:(<QuizSound soundFile={N53}/>)
+                answer:"Grand Children",
+                
                 
             },
         ],

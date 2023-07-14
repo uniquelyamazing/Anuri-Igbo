@@ -5,6 +5,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Audio } from 'expo-av';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import alph from '../assets/alph.jpg'
+export const  handleRetakeLessons = () => {
+  // Handle retake lesson action
+  console.log('Retake the lesson');
+  setCurrentSoundIndex(0);
+  setShowCompletionModal(false);
+}
 export default function Colors({navigation}) {
   const [sounds, setSounds] = useState([
     { name: (<Text style={{color:'black', backgroundColor:'white',}}>BLACK</Text>), name2: 'Oji', source: require(   '../assets/sounds/BLACK.mp3') },
@@ -25,8 +31,19 @@ export default function Colors({navigation}) {
 
   useEffect(() => {
     loadProgress();
-  }, []);
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
 
+    return () => {
+      backHandler.remove();
+    };
+  }, []);
+  const handleBackPress = () => {
+    return true; // Return false to allow the default back button behavior
+  } 
+  const back = () => {
+    navigation.navigate('Basics')
+    pauseSound()
+  }
   useEffect(() => {
     saveProgress();
   }, [currentSoundIndex]);
@@ -89,7 +106,7 @@ export default function Colors({navigation}) {
   }
 
   function handleContinue() {
-    // Handle continue action
+    navigation.navigate('QuizColors')
     console.log('Continue to next page or lesson');
     setShowCompletionModal(false);
   }
@@ -173,7 +190,7 @@ export default function Colors({navigation}) {
           <View style={[styles.progressBar, { width: `${(savedProgress / sounds.length) * 100}%` }]} />
         </View>
         <TouchableOpacity style={styles.button} onPress={handleContinue}>
-          <Text style={styles.buttonText}>Continue</Text>
+          <Text style={styles.buttonText}>Take Quiz</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleRetakeLesson}>
           <Text style={styles.buttonText}>Retake Lesson</Text>

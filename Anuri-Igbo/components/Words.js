@@ -4,6 +4,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Audio } from 'expo-av';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import alph from '../assets/alph.jpg'
+export const  handleRetakeLessons = () => {
+  // Handle retake lesson action
+  console.log('Retake the lesson');
+  setCurrentSoundIndex(0);
+  setShowCompletionModal(false);
+}
 export default function Words({navigation}) {
   const [sounds, setSounds] = useState([
     {   name: 'animals',  source: require('../assets/sounds/animals.mp3') },
@@ -52,8 +58,19 @@ export default function Words({navigation}) {
 
   useEffect(() => {
     loadProgress();
-  }, []);
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
 
+    return () => {
+      backHandler.remove();
+    };
+  }, []);
+  const handleBackPress = () => {
+    return true; // Return false to allow the default back button behavior
+  } 
+  const back = () => {
+    navigation.navigate('Basics')
+    pauseSound()
+  }
   useEffect(() => {
     saveProgress();
   }, [currentSoundIndex]);
@@ -117,7 +134,7 @@ export default function Words({navigation}) {
   }
 
   function handleContinue() {
-    // Handle continue action
+    navigation.navigate('QuizWords')
     console.log('Continue to next page or lesson');
     setShowCompletionModal(false);
   }
@@ -128,6 +145,7 @@ export default function Words({navigation}) {
     setCurrentSoundIndex(0);
     setShowCompletionModal(false);
   }
+  const [refreshKey, setRefreshKey] = useState(0);
   const handleRfresh = ()  => {
     setRefreshKey(refreshKey + 1);
     handleToggleDropdown(false)
@@ -200,7 +218,7 @@ export default function Words({navigation}) {
           <View style={[styles.progressBar, { width: `${(savedProgress / sounds.length) * 100}%` }]} />
         </View>
         <TouchableOpacity style={styles.button} onPress={handleContinue}>
-          <Text style={styles.buttonText}>Continue</Text>
+          <Text style={styles.buttonText}>Take Quiz</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleRetakeLesson}>
           <Text style={styles.buttonText}>Retake Lesson</Text>

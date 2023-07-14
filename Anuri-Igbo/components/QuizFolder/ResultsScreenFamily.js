@@ -13,8 +13,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { captureRef } from "react-native-view-shot";
-import { handleRetakeLessons } from "../Alphabet";
-const ResultsScreen = () => {
+
+const ResultsScreenFamily = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const score = route.params.score;
@@ -69,13 +69,11 @@ const ResultsScreen = () => {
   const handleButtonClick = () => {
     if (resultText === "Poor Result" || resultText === "Very Poor") {
       handleRetakeLessons()
-      navigation.navigate("Alphabet");
+      navigation.navigate("Family");
     } else {
       navigation.navigate("Basics");
     }
   };
-
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -191,4 +189,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ResultsScreen;
+export default ResultsScreenFamily;

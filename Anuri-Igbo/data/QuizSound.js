@@ -1,90 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
 import { Audio } from 'expo-av';
-
+import audiowave from '../assets/audio.jpg'
 import { Ionicons } from '@expo/vector-icons';
-export default function QuizSound({ soundFile, text, texxt, buttonColor,buttonQuiz, textStyle, textStyles, Button, text2, buttonn, pauseButton}) {
+export default function QuizSound({ soundFile}) {
   const soundRef = React.useRef(null);
-  const [playingStatus, setPlayingStatus] = useState('Play');
+  const [isIconVisible, setIsIconVisible]= useState(false)
+  const [sound, setSound] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+
   useEffect(() => {
     return () => {
-      // Clean up the sound when the component is unmounted
-      if (soundRef.current) {
-        soundRef.current.unloadAsync();
+      if (sound) {
+        sound.stopAsync();
       }
     };
   }, []);
 
-  const playRecording = async () => {
-    const { sound } = await Audio.Sound.createAsync(
-      soundFile,
-      {
-        shouldPlay: true,
-        isLooping: true,
-      },
-      updateScreenForSoundStatus
-    );
-    soundRef.current = sound;
-    setPlayingStatus('playing');
+  const playSound = async () => {
+    if (sound) {
+      sound.stopAsync();
+    }
+
+    const { sound: newSound } = await Audio.Sound.createAsync(soundFile);
+    setSound(newSound);
+    await newSound.playAsync();
+    setIsPlaying(true);
+    setIsIconVisible(true);
   };
 
-  const updateScreenForSoundStatus = (status) => {
-    if (status.isPlaying && playingStatus !== 'playing') {
-      setPlayingStatus('playing');
-    } else if (!status.isPlaying && playingStatus === 'playing') {
-      setPlayingStatus('paused');
+  const pauseSound = async () => {
+    if (sound) {
+      await sound.pauseAsync();
+      setIsPlaying(false);
+      setIsIconVisible(false);
     }
   };
 
-  const pauseAndPlayRecording = async () => {
-    if (soundRef.current) {
-      if (playingStatus === 'playing') {
-        console.log('pausing...');
-        await soundRef.current.pauseAsync();
-        console.log('paused!');
-        setPlayingStatus('paused');
-      } else {
-        console.log('playing...');
-        await soundRef.current.playAsync();
-        console.log('playing!');
-        setPlayingStatus('playing');
-      }
-    }
-  };
-// File A
-
-  const playAndPause = () => {
-    switch (playingStatus) {
-      case 'Play':
-       
-        playRecording();
-        
-        break;
-      case 'paused':
-      case 'playing':
-        pauseAndPlayRecording();
-        break;
-    }
-  };
-  const [isIconVisible, setIsIconVisible] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsIconVisible(!isIconVisible);
-  };
-  const Press = () => {
-    playAndPause()
-    handleButtonClick()
-  }
   return (
     
-    <TouchableOpacity style={styles.button} onPress={Press}>
+    <TouchableOpacity style={styles.button} onPress={isPlaying ? pauseSound : playSound} >
      
      {isIconVisible ? (
-        <Ionicons name="volume-high" size={15} color="black" />
+        <Ionicons name="pause" size={20} color="white" />
       ) : (
-        <Ionicons name="volume-off" size={15} color="black" />
+        <Ionicons name="play" size={20} color="white" />
       )}
-         
+         <Image source={audiowave} style={styles.image}/>
     </TouchableOpacity>
    
   );
@@ -92,25 +55,23 @@ export default function QuizSound({ soundFile, text, texxt, buttonColor,buttonQu
 
 const styles = StyleSheet.create({
   button: {
-    width:50,
+    width:330,
     height:50,
     borderRadius: 100,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#f4d3ab',
+    flexDirection:'row',
+    backgroundColor: 'black',
     shadowColor: 'black',
     shadowOpacity: 1,
     shadowOffset: { width: 50, height: 50 },
     shadowRadius: 8,
     elevation: 30, 
+    padding:10
   },
   
-  buttonText: {
-   
-    fontSize: 16,
-    textAlign: 'center',
-    color:'#73030F',
-    marginTop:5,
-    marginBottom:5
+  image: {
+    width:290,
+    height:30
   },
 });

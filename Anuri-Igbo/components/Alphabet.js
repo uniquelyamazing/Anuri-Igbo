@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Modal, StyleSheet, ImageBackground,  } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, StyleSheet, ImageBackground, BackHandler,  } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Audio } from 'expo-av';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import alph from '../assets/alph.jpg'
-export default function AlphabetsData({navigation}) {
+export const  handleRetakeLessons = () => {
+  // Handle retake lesson action
+  console.log('Retake the lesson');
+  setCurrentSoundIndex(0);
+  setShowCompletionModal(false);
+}
+const Alphabet = ({navigation})=> {
   const [sounds, setSounds] = useState([
     { name: 'A',  source: require('../assets/sounds/A.mp3') },
     { name: 'B',  source: require('../assets/sounds/B.mp3') },
@@ -51,7 +57,13 @@ export default function AlphabetsData({navigation}) {
 
   useEffect(() => {
     loadProgress();
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+
+    return () => {
+      backHandler.remove();
+    };
   }, []);
+  
 
   useEffect(() => {
     saveProgress();
@@ -121,7 +133,7 @@ export default function AlphabetsData({navigation}) {
     setShowCompletionModal(false);
   }
 
-  function handleRetakeLesson() {
+  const  handleRetakeLesson = () => {
     // Handle retake lesson action
     console.log('Retake the lesson');
     setCurrentSoundIndex(0);
@@ -137,10 +149,20 @@ export default function AlphabetsData({navigation}) {
   const handleToggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  
+  
+
+  const handleBackPress = () => {
+    return true; // Return false to allow the default back button behavior
+  } 
+  const back = () => {
+    navigation.navigate('Basics')
+    pauseSound()
+  }
   return (
     <View style={{ flex: 1,  alignItems: 'center' , backgroundColor:'black'}} key={refreshKey}>
     <View style={styles.nowplayingContainer}>
-    <TouchableOpacity style={styles.nowPlayingIcon} onPress={() => navigation.navigate('Basics')}>
+    <TouchableOpacity style={styles.nowPlayingIcon} onPress={back}>
       <Icon name='chevron-left' size={15} color='white'/>
       </TouchableOpacity>
       <Text style={styles.nowPlayingText}>Now Learning Alphabets</Text>
@@ -327,3 +349,4 @@ const styles = StyleSheet.create({
 });
 
 
+export default Alphabet

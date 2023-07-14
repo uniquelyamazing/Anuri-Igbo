@@ -1,6 +1,6 @@
 import { StyleSheet, Text, SafeAreaView, View, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
-import questions from "../../data/questions";
+import questions from "../../data/questionsAnimals";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 const QuizScreen = ({navigation}) => {
@@ -71,7 +71,7 @@ const QuizScreen = ({navigation}) => {
   useEffect(() => {
     if (index + 1 > data.length) {
       clearTimeout(interval)
-      navigation.navigate("Results", {
+      navigation.navigate("ResultsAnimals", {
         answers: answers,
         points: points,
       });

@@ -28,7 +28,7 @@ export default function Home({navigation}) {
   
 
   return (
-    <ScrollView>
+  
       <ImageBackground source={audioBack} style={styles.container}>
         <View  style={styles.Box1}>
         <View style={{flexDirection:'row', justifyContent:'space-between',alignItems:'center', width:'100%', marginTop:25}}>
@@ -39,34 +39,27 @@ export default function Home({navigation}) {
        backgroundColor:'white'}} onPress={() => navigation.navigate('Basics')}>
         <Icon name='chevron-right' size={20} color='black'/></TouchableOpacity>
            </View>
-            <Text style={{color:'black', fontSize:40,marginTop:20 }}>Welcome {username}</Text>
+            <Text style={{color:'black', fontSize:40,marginTop:20 }}>Welcome {username || 'Guest'}</Text>
            
            <Text style={{color:'black', fontSize:37,fontWeight:800, }}>Ready To Learn Igbo Language?</Text>
         </View>
-        <View style={styles.Box2}>
-        <Text style={{fontSize:30, fontWeight:800, color:'white'}}>Basics</Text>
+        <TouchableOpacity style={styles.Box2} onPress={() => navigation.navigate('Basics')}>
+        <Text style={{fontSize:30, fontWeight:800, color:'white'}}>Lessons</Text>
         <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Alphabets</Text>
         <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Number Numeric</Text>
         <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Animals Name</Text>
         <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Types Of Food</Text>
         <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Name Of Colors</Text>
+        <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Family Members</Text>
+        <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Short Sentences</Text>
+        <Text style={{fontSize:13, color:'white', marginTop:7}}>✅    Igbo Culture</Text>
         <TouchableOpacity style={{width:40, height:40, borderRadius:10, justifyContent:'center', alignItems:'center', position:'absolute',
       top:140, right:20, backgroundColor:'white'}} onPress={() => navigation.navigate('Basics')}>
         <Icon name='chevron-right' size={20} color='black'/></TouchableOpacity>
-        </View>
-        <View style={styles.Box3}>
-        <Text style={{fontSize:30, fontWeight:800, color:'black'}}>Advance</Text>
-        <Text style={{fontSize:13, color:'black', marginTop:7, textAlign:'right'}}>✅     alphabets</Text>
-        <Text style={{fontSize:13, color:'black', marginTop:7, textAlign:'right'}}>✅     alphabets</Text>
-        <Text style={{fontSize:13, color:'black', marginTop:7, textAlign:'right'}}>✅     alphabets</Text>
-        <Text style={{fontSize:13, color:'black', marginTop:7, textAlign:'right'}}>✅     alphabets</Text>
-
-        <TouchableOpacity style={{width:40, height:40, borderRadius:10, justifyContent:'center', alignItems:'center', position:'absolute',
-        top:140, left:20, backgroundColor:'black'}} onPress={() => navigation.navigate('Advance')}>
-          <Icon name='chevron-right' size={20} color='white'/></TouchableOpacity>
-        </View>
+        </TouchableOpacity>
+       
         </ImageBackground>
-    </ScrollView>
+   
   );
 }
 
@@ -74,11 +67,9 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     alignItems: 'center',
-   
     justifyContent:'space-between',
-    alignItems:'center',
-    paddingBottom:20,
-    
+   
+   
   },
   Box1:{
         width:'100%',
@@ -94,7 +85,7 @@ const styles = StyleSheet.create({
   },
   Box2:{
     width:'98%',
-    height:200,
+    height:300,
     marginTop:20,
     transform: [{ rotate: '3deg' }] ,
     backgroundColor:'black',

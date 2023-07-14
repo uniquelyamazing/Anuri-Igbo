@@ -1,6 +1,6 @@
 import { StyleSheet, Text, SafeAreaView, View, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
-import questions from "../../data/questions";
+import questions from "../../data/questionsFruits";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 const QuizScreen = ({navigation}) => {
@@ -293,7 +293,7 @@ const QuizScreen = ({navigation}) => {
         {index + 1 >= questions.length ? (
           <Pressable
             onPress={() =>
-              navigation.navigate("Results", {
+              navigation.navigate("ResultsFruits", {
                 points: points,
 
                 answers: answers,

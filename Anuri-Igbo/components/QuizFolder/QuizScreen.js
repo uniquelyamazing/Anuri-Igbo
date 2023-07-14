@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import questions from "../../data/questions";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
+import { pauseSound } from '../../data/QuizSound';
 const QuizScreen = ({navigation}) => {
   
   const data = questions;
@@ -86,6 +87,13 @@ const QuizScreen = ({navigation}) => {
 
   const currentQuestion = data[index];
   console.log(answerStatus)
+
+  const handleButtonPress = () => {
+   
+   pauseSound()
+    setIndex(index + 1);
+  };
+  
 
   return (
     <SafeAreaView>
@@ -259,7 +267,7 @@ const QuizScreen = ({navigation}) => {
 
               <Text style={{ width:230, textAlign:'center' }}>{item.answer}</Text>
             </Pressable>
-            <View style={{marginRight:5}} >{item.sound}</View>
+          
             </View>
           ))}
         </View>
@@ -312,7 +320,7 @@ const QuizScreen = ({navigation}) => {
           </Pressable>
         ) : answerStatus === null ? null : (
           <Pressable
-            onPress={() => setIndex(index + 1)}
+            onPress={handleButtonPress}
             style={{
               backgroundColor: "green",
               padding: 10,
