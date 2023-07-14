@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Modal, StyleSheet, ImageBackground,  } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, StyleSheet, ImageBackground, BackHandler,  } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Audio } from 'expo-av';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -46,10 +46,9 @@ export default function Animals({navigation}) {
     return () => {
       backHandler.remove();
     };
+    
   }, []);
-  const handleBackPress = () => {
-    return true; // Return false to allow the default back button behavior
-  } 
+ 
   const back = () => {
     navigation.navigate('Basics')
     pauseSound()
@@ -138,7 +137,9 @@ export default function Animals({navigation}) {
   const handleToggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  
+  const handleBackPress = () => {
+    return true; // Return false to allow the default back button behavior
+  } 
   return (
     <View style={{ flex: 1,  alignItems: 'center' , backgroundColor:'black'}} key={refreshKey}>
     <View style={styles.nowplayingContainer}>

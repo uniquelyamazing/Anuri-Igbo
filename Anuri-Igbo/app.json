@@ -7,9 +7,9 @@
     "icon": "./assets/do.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/sp.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ff73030f"
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,12 +20,12 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/do.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "black"
       },
       "package": "com.isaacayomide.AnuriIgbo"
     },
     "web": {
-      "favicon": "./assets/do.png"
+      "favicon": "./assets/web.png"
     },
     "extra": {
       "eas": {

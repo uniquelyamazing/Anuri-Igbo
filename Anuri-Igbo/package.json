@@ -23,7 +23,7 @@
     "expo-dev-client": "~2.2.1",
     "expo-linear-gradient": "~12.1.2",
     "expo-status-bar": "~1.4.4",
-    "firebase": "^9.23.0",
+    "firebase": "9.23.0",
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-gesture-handler": "~2.9.0",
@@ -34,7 +34,8 @@
     "react-native-snap-carousel": "^3.9.1",
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-view-shot": "3.5.0"
+    "react-native-view-shot": "3.5.0",
+    "undefined": "firebase/firestore@9.23.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
