@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/do.png",
-        "backgroundColor": "black"
+        "backgroundColor": "#000000"
       },
       "package": "com.isaacayomide.AnuriIgbo"
     },
@@ -29,7 +29,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "df83b807-9496-4337-a7c4-ee2949ae31dd"
+        "projectId": "6985acdb-0656-4f18-bb76-0ff0f9dd5dfc"
       }
     }
   }
