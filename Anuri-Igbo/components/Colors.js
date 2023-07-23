@@ -20,6 +20,7 @@ export default function Colors({navigation}) {
     { name: (<Text style={{color:'purple',}}>PURPLE</Text>), name2: 'Ocha aja', source: require(    '../assets/sounds/PURPLE.mp3') },
     { name: (<Text style={{color:'red',}}>RED</Text>), name2: 'Ọcha', source: require( '../assets/sounds/RED.mp3') },
     { name: (<Text style={{color:'yellow',}}>YELLOW</Text>), name2: 'Odo', source: require(    '../assets/sounds/YELLOW.mp3') },
+    { name: (<Text style={{color:'gold',}}>GOLD</Text>), source: require(    '../assets/sounds/GOLD.mp3') },
     { name: 'WHITE', name2: 'Ebele', source: require(   '../assets/sounds/WHITE.mp3' ) },
 
   ]);

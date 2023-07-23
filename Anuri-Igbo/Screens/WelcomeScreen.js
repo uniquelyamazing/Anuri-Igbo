@@ -4,21 +4,13 @@ import { View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
 import Icon from 'react-native-vector-icons/FontAwesome';
 import welcome from '../assets/welcome.jpg'
+
 const WelcomeScreen = ({ navigation }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    checkLoginState();
-  }, []);
-
-  const checkLoginState = async () => {
-    try {
-      const storedLoginState = await AsyncStorage.getItem('isLoggedIn');
-      setIsLoggedIn(storedLoginState === 'true');
-    } catch (error) {
-      console.log('Failed to retrieve login state', error);
-    }
-  };
+ 
+ const navigates = () => {
+  navigation.navigate( 'Login' );
+ }
+ 
 
   return (
     <ImageBackground style={{ flex: 1, padding: 20 }} source={welcome}>
@@ -31,7 +23,7 @@ const WelcomeScreen = ({ navigation }) => {
       </View>
       <View style={{ marginTop: 30 }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate(isLoggedIn ? 'Home' : 'Login')}
+          onPress={navigates}
           style={styles.button}
         >
           <Icon name='chevron-right' size={20} color='white' />

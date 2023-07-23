@@ -1,47 +1,51 @@
 import React, {useState, useEffect} from 'react';
 import { View, StyleSheet, Text, ImageBackground, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { auth } from '../firebaseConfig';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { firestore } from '../firebaseConfig';
 import profile from '../assets/profile.png'
 import audioBack from '../assets/audioBack.jpg'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Modal } from 'react-native';
-import { signOut } from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Home({navigation}) {
-
-  const [username, setUsername] = useState('');
+const  Home =({navigation ,  handleLogout })  => {
 const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  useEffect(() => {
-    const fetchUsername = async () => {
-      try {
-        const q = query(collection(firestore, 'users'), where('userId', '==', auth.currentUser.uid));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-          setUsername(doc.data().username);
-        });
-      } catch (error) {
-        console.log('Error fetching username:', error);
-      }
-    };
-  
-    fetchUsername();
-  }, []);
-  
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
+const [username, setUsername] = useState('');
 
-  const handleLogout = async () => {
+useEffect(() => {
+  // Fetch the username from AsyncStorage
+  const fetchUsername = async () => {
     try {
-      await auth.signOut;
-      navigation.navigate('Login');
+      const storedUsername = await AsyncStorage.getItem('username');
+      if (storedUsername) {
+        setUsername(storedUsername);
+      } else {
+        // Handle the case when the username is not found in AsyncStorage
+        console.log('Username not found in AsyncStorage.');
+      }
     } catch (error) {
-      console.log('Logout failed', error.message);
+      console.log('Error fetching username from AsyncStorage:', error);
     }
   };
+
+  // Call the fetchUsername function inside useEffect
+  fetchUsername();
+}, []);
+ 
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const handleLoginButtonPress = () => {
+    // Call the handleLogin function passed from the root App component
+    handleLogout();
+  };
+
+  
+  
 const cancle = () => {
  setIsDropdownOpen(false)
  setShowLogoutModal(false)
+}
+const log = () => {
+  setShowLogoutModal(true)
+  setIsDropdownOpen(false)
 }
   return (
   
@@ -57,20 +61,21 @@ const cancle = () => {
         <Icon name='chevron-right' size={20} color='black'/></TouchableOpacity>
            </View>
            {isDropdownOpen && (
+            <TouchableOpacity onPress={() => setIsDropdownOpen(false)} style={{width:'100%', backgroundColor:'transparent', height:600,  position:'relative',}}>
             <View  style={{ padding:20, justifyContent:'center',alignItems:'center', 
             backgroundColor:'black', 
             position:'absolute',
-            top:70,
-            left:50,
             borderRadius:10,
             zIndex:99999
           
           }}>
+
           <Text style={{color:'white', fontSize:20, width:'100%', textAlign:'center', marginBottom:20}}>{username || 'Guest'}</Text>
-          <TouchableOpacity onPress={() => setShowLogoutModal(true)} style={styles.logoutButton}>
+          <TouchableOpacity onPress={log} style={styles.logoutButton}>
           <Text style={styles.logoutButtonText}>Logout</Text>
         </TouchableOpacity>
             </View>
+            </TouchableOpacity>
           )}
             <Text style={{color:'black', fontSize:40,marginTop:20 }}>Welcome {username || 'Guest'}</Text>
            
@@ -95,7 +100,7 @@ const cancle = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalText}>Are you sure you want to logout?</Text>
             <View style={styles.modalButtonContainer}>
-              <TouchableOpacity onPress={handleLogout} style={styles.confirmButton}>
+              <TouchableOpacity onPress={handleLoginButtonPress} style={styles.confirmButton}>
                 <Text style={styles.buttonText}>Confirm</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={cancle} style={styles.cancelButton}>
@@ -247,3 +252,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+export default Home

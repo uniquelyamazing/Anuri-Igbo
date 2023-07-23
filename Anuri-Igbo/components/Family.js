@@ -48,10 +48,6 @@ export default function Family({navigation}) {
   const handleBackPress = () => {
     return true; // Return false to allow the default back button behavior
   } 
-  const back = () => {
-    navigation.navigate('Basics')
-    pauseSound()
-  }
   useEffect(() => {
  saveProgress();
   }, [currentSoundIndex]);

@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from 'react';
-import { Text, View, TextInput, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Alert, ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 import { signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { updateProfile } from 'firebase/auth';
 import { Ionicons } from '@expo/vector-icons';
@@ -7,6 +7,7 @@ import Login from '../assets/login.jpg'
 import { ImageBackground } from 'react-native';
 import { auth } from '../firebaseConfig';
 import { StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
@@ -20,26 +21,29 @@ export default function LoginScreen({ navigation }) {
     setLoading(true); // Show the loader
 
     try {
-    
       const response = await signInWithEmailAndPassword(auth, email, password);
       const user = response.user;
-    
+
       // Set the username as the user's display name
       await updateProfile(user, {
         displayName: username,
       });
-    
+
       console.log(response);
       Alert.alert('Login successful');
+
+      // Save the login status flag to AsyncStorage
+      await AsyncStorage.setItem('loginStatus', 'loggedIn');
+
+      // Navigate to 'insideLayout'
       navigation.navigate('Home');
     } catch (error) {
       console.log('Login failed', error.message);
       setErrorMessage(error.message);
     }
-    
+
     setLoading(false); // Hide the loader
   };
-
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -55,6 +59,7 @@ export default function LoginScreen({ navigation }) {
 
 
   return (
+    
     <ImageBackground source={Login} style={styles.container}>
     <Text style={{fontSize:50, color:'white'}} >LOGIN</Text>
     <View style={styles.InputContainer}>
@@ -99,6 +104,7 @@ export default function LoginScreen({ navigation }) {
     </Text>
     </View>
     </ImageBackground>
+   
   );
 }
 

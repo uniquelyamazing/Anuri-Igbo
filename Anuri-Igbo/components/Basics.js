@@ -1,7 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import login from '../assets/login.jpg'
-import image from '../assets/background.jpg';
 import animal from '../assets/animal.png'
 import fruit from '../assets/fruit.png'
 import sentences from '../assets/sentences.jpg'
@@ -9,32 +8,29 @@ import family from '../assets/family.png'
 import alphabet from '../assets/alphabet.png'
 import number from '../assets/number.png'
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { auth } from '../firebaseConfig';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { firestore } from '../firebaseConfig';
-import { ResizeMode } from 'expo-av';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Basics ({navigation}) {
-
-
-
   const [username, setUsername] = useState('');
 
   useEffect(() => {
+    // Fetch the username from AsyncStorage
     const fetchUsername = async () => {
       try {
-        const q = query(collection(firestore, 'users'), where('userId', '==', auth.currentUser.uid));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-          setUsername(doc.data().username);
-        });
+        const storedUsername = await AsyncStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        } else {
+          // Handle the case when the username is not found in AsyncStorage
+          console.log('Username not found in AsyncStorage.');
+        }
       } catch (error) {
-        console.log('Error fetching username:', error);
+        console.log('Error fetching username from AsyncStorage:', error);
       }
     };
-  
+
+    // Call the fetchUsername function inside useEffect
     fetchUsername();
-  }, []);
-  
+  }, [])
 
   return (
     <ImageBackground source={login} style={styles.container}>

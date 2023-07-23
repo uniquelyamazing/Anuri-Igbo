@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Home from './components/Home';
 import { signOut } from 'firebase/auth';
 import { auth } from './firebaseConfig';
+
 export default function App() {
   const [user, setUser] = useState();
 
@@ -51,9 +52,8 @@ export default function App() {
      
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar barStyle="light-content" backgroundColor="black" />
+    <StatusBar style="auto" />
       {user ? <Home handleLogout={handleLogout} /> : <AppNavigator />}
     </View>
-    
   );
 }

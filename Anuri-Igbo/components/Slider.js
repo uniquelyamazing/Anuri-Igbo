@@ -4,22 +4,21 @@ import ImageCarousel from './ImageCarousel';
 
 const ImageCarouselPage = () => {
   const images = [
-    { image: require('../assets/image.jpg'), text: 'Image 2' },
-    { image: require('../assets/image1.jpg'), text: 'Image 3' },
-    { image: require('../assets/image2.jpg'), text: 'Image 3' },
-    { image: require('../assets/image3.jpg'), text: 'Image 3' },
-    { image: require('../assets/image4.jpg'), text: 'Image 3' },
-    { image: require('../assets/image5.jpg'), text: 'Image 3' },
-    { image: require('../assets/image6.jpg'), text: 'Image 3' },
-    { image: require('../assets/image7.jpg'), text: 'Image 3' },
-    { image: require('../assets/image8.jpg'), text: 'Image 3' },
-    { image: require('../assets/image9.jpg'), text: 'Image 3' },
-    { image: require('../assets/image10.jpg'), text: 'Image 3' },
-    { image: require('../assets/image11.jpg'), text: 'Image 3' },
-    { image: require('../assets/image12.jpg'), text: 'Image 3' },
-    { image: require('../assets/image13.jpg'), text: 'Image 3' },
-    { image: require('../assets/image14.jpg'), text: 'Image 3' },
-    { image: require('../assets/image15.jpg'), text: 'Image 3' },
+    { image: require('../assets/image.jpg'), text:  'Igbo culture clothing and traditions' },
+    { image: require('../assets/image1.jpg'), text: 'Igbo native food' },
+    { image: require('../assets/image2.jpg'), text: 'Igbo culture clothing and traditions' },
+    { image: require('../assets/image3.jpg'), text: 'Igbo culture clothing and traditions' },
+    { image: require('../assets/image4.jpg'), text: 'Igbo native food' },
+    { image: require('../assets/image5.jpg'), text: 'Igbo culture clothing and traditions' },
+    { image: require('../assets/image6.jpg'), text: 'Igbo culture clothing and traditions' },
+    { image: require('../assets/image7.jpg'), text: 'Igbo native food' },
+    { image: require('../assets/image9.jpg'), text: 'Igbo culture clothing and traditions' },
+    { image: require('../assets/image10.jpg'), text: 'Igbo culture clothing and traditions' },
+    { image: require('../assets/image11.jpg'), text: 'Igbo native food' },
+    { image: require('../assets/image12.jpg'), text: 'Igbo native food' },
+    { image: require('../assets/image13.jpg'), text: 'Igbo native food' },
+    { image: require('../assets/image14.jpg'), text: 'Igbo native food' },
+    { image: require('../assets/image15.jpg'), text: 'Igbo native food' },
   ];
 
   return (

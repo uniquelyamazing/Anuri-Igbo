@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -16,7 +16,6 @@ import QuizScreenFamily from '../components/QuizFolder/QuizScreenFamily';
 import QuizScreenFruits from '../components/QuizFolder/QuizScreenFruits';
 import QuizScreenWords  from '../components/QuizFolder/QuizScreenWords';
 import QuizScreenNumbers from '../components/QuizFolder/QuizScreenNumbers';
-import HomeScreen from '../components/HomeScreen';
 import LoginScreen from '../Screens/LoginScreen';
 import RegisterScreen from '../Screens/RegisterScreen';
 import WelcomeScreen from '../Screens/WelcomeScreen';
@@ -32,43 +31,45 @@ import Words from '../components/Words';
 import ImageCarouselPage from '../components/Slider';
 
 
+const Stack = createNativeStackNavigator()
 
-const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
+ 
   return (
+
     <NavigationContainer style={styles.View}>
-      <Stack.Navigator>
-        <Stack.Screen options={{ headerShown: false }} name="welcome" component={WelcomeScreen} />
-        <Stack.Screen options={{ headerShown: false }} name="Register" component={RegisterScreen} />
-        <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
-        <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
-        <Stack.Screen options={{ headerShown: false }} name="Alphabet" component={Alphabet} />
-        <Stack.Screen options={{ headerShown: false }} name="Numbers" component={Numbers} />
-        <Stack.Screen options={{ headerShown: false }} name="Fruits" component={Fruits} />
-        <Stack.Screen options={{ headerShown: false }} name="Colors" component={Colors} />
-        <Stack.Screen options={{ headerShown: false }} name="Animals" component={Animals} />
-        <Stack.Screen options={{ headerShown: false }} name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen options={{ headerShown: false }} name="Basics" component={Basics} />
-        <Stack.Screen name="Quiz" component={QuizScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="QuizColors" component={QuizScreenColors } options={{ headerShown: false }} />
-        <Stack.Screen name="QuizAnimals" component={QuizScreenAnimals} options={{ headerShown: false }} />
-        <Stack.Screen name="QuizFamily" component={QuizScreenFamily } options={{ headerShown: false }} />
-        <Stack.Screen name="QuizFruits" component={QuizScreenFruits } options={{ headerShown: false }} />
-        <Stack.Screen name="QuizWords" component={QuizScreenWords  } options={{ headerShown: false }} />
-        <Stack.Screen name="QuizNumbers" component={QuizScreenNumbers} options={{ headerShown: false }} />
-        <Stack.Screen name="Family" component={Family} options={{ headerShown: false }} />
-        <Stack.Screen name="Words" component={Words} options={{ headerShown: false }} />
-        <Stack.Screen name="Results" component={ResultsScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="ResultsAnimals" component={ResultsScreenAnimals} options={{ headerShown: false }} />
-        <Stack.Screen name="ResultsFruits" component={ResultsScreenFruits} options={{ headerShown: false }} />
-        <Stack.Screen name="ResultsColors" component={ResultsScreenColors} options={{ headerShown: false }} />
-        <Stack.Screen name="ResultsFamily" component={ResultsScreenFamily} options={{ headerShown: false }} />
-        <Stack.Screen name="ResultsWords" component={ResultsScreenWords} options={{ headerShown: false }} />
-        <Stack.Screen name="ResultsNumbers" component={ResultsScreenNumbers} options={{ headerShown: false }} />
-        <Stack.Screen name="culture" component={ImageCarouselPage} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator>
+  <Stack.Screen options={{ headerShown: false }} name="welcome" component={WelcomeScreen}/>
+  <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
+  <Stack.Screen options={{ headerShown: false }} name="Basics" component={Basics} />
+  <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
+  <Stack.Screen options={{ headerShown: false }} name="Register" component={RegisterScreen} />
+  <Stack.Screen options={{ headerShown: false }} name="Alphabet" component={Alphabet} />
+  <Stack.Screen options={{ headerShown: false }} name="Numbers" component={Numbers} />
+  <Stack.Screen options={{ headerShown: false }} name="Fruits" component={Fruits} />
+  <Stack.Screen options={{ headerShown: false }} name="Colors" component={Colors} />
+  <Stack.Screen options={{ headerShown: false }} name="Animals" component={Animals} />
+  <Stack.Screen name="Quiz" component={QuizScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="QuizColors" component={QuizScreenColors } options={{ headerShown: false }} />
+  <Stack.Screen name="QuizAnimals" component={QuizScreenAnimals} options={{ headerShown: false }} />
+  <Stack.Screen name="QuizFamily" component={QuizScreenFamily } options={{ headerShown: false }} />
+  <Stack.Screen name="QuizFruits" component={QuizScreenFruits } options={{ headerShown: false }} />
+  <Stack.Screen name="QuizWords" component={QuizScreenWords  } options={{ headerShown: false }} />
+  <Stack.Screen name="QuizNumbers" component={QuizScreenNumbers} options={{ headerShown: false }} />
+  <Stack.Screen name="Family" component={Family} options={{ headerShown: false }} />
+  <Stack.Screen name="Words" component={Words} options={{ headerShown: false }} />
+  <Stack.Screen name="Results" component={ResultsScreen} options={{ headerShown: false }} />
+  <Stack.Screen name="ResultsAnimals" component={ResultsScreenAnimals} options={{ headerShown: false }} />
+  <Stack.Screen name="ResultsFruits" component={ResultsScreenFruits} options={{ headerShown: false }} />
+  <Stack.Screen name="ResultsColors" component={ResultsScreenColors} options={{ headerShown: false }} />
+  <Stack.Screen name="ResultsFamily" component={ResultsScreenFamily} options={{ headerShown: false }} />
+  <Stack.Screen name="ResultsWords" component={ResultsScreenWords} options={{ headerShown: false }} />
+  <Stack.Screen name="ResultsNumbers" component={ResultsScreenNumbers} options={{ headerShown: false }} />
+  <Stack.Screen name="culture" component={ImageCarouselPage} options={{ headerShown: false }} />
+  
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
 
